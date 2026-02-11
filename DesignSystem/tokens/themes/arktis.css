@@ -1,0 +1,104 @@
+/* ==========================================================================
+   Theme: Arktis (Schnee / Wintertarn)
+   ==========================================================================
+   Farben für arktische und Winteroperationen. Basiert auf dem
+   Schneetarn-Muster mit Eis-, Weiß- und kühlen Blautönen.
+   ========================================================================== */
+
+[data-theme="arktis"],
+.theme-arktis {
+    /* ---------------------------------------------------------------------
+     Primary Scale – Eisblau
+     --------------------------------------------------------------------- */
+    --color-primary-50: #F5F8FB;
+    --color-primary-100: #E8EFF6;
+    --color-primary-200: #D1DFED;
+    --color-primary-300: #B0C8E0;
+    --color-primary-400: #88ACD0;
+    --color-primary-500: #6891BF;
+    --color-primary-600: #5178A8;
+    --color-primary-700: #436290;
+    --color-primary-800: #3A5276;
+    --color-primary-900: #334563;
+    --color-primary-950: #1E2B3E;
+
+    /* ---------------------------------------------------------------------
+     Secondary Scale – Silbergrau
+     --------------------------------------------------------------------- */
+    --color-secondary-50: #F7F8F9;
+    --color-secondary-100: #EDEEF0;
+    --color-secondary-200: #D9DDE1;
+    --color-secondary-300: #BFC4CB;
+    --color-secondary-400: #A0A8B2;
+    --color-secondary-500: #858E9A;
+    --color-secondary-600: #6E7783;
+    --color-secondary-700: #5C636D;
+    --color-secondary-800: #4E545C;
+    --color-secondary-900: #43484F;
+    --color-secondary-950: #282C31;
+
+    /* ---------------------------------------------------------------------
+     Accent Scale – Polarblau
+     --------------------------------------------------------------------- */
+    --color-accent-50: #F0F7FF;
+    --color-accent-100: #E0EFFE;
+    --color-accent-200: #BAE0FD;
+    --color-accent-300: #7CC8FC;
+    --color-accent-400: #36AEF8;
+    --color-accent-500: #0C95E9;
+    --color-accent-600: #0077C7;
+    --color-accent-700: #015FA1;
+    --color-accent-800: #065185;
+    --color-accent-900: #0B446E;
+    --color-accent-950: #072B49;
+
+    /* ---------------------------------------------------------------------
+     Neutral Scale – Schnee / Kühlweiß
+     --------------------------------------------------------------------- */
+    --color-neutral-0: #FFFFFF;
+    --color-neutral-50: #F8F9FB;
+    --color-neutral-100: #F0F2F5;
+    --color-neutral-200: #E2E5EB;
+    --color-neutral-300: #CDD2DA;
+    --color-neutral-400: #A8B0BD;
+    --color-neutral-500: #8892A2;
+    --color-neutral-600: #6E7789;
+    --color-neutral-700: #5B6372;
+    --color-neutral-800: #4D545F;
+    --color-neutral-900: #434851;
+    --color-neutral-950: #272B31;
+
+    /* ---------------------------------------------------------------------
+     Status Colors
+     --------------------------------------------------------------------- */
+    --color-success-50: #ECFDF5;
+    --color-success-100: #D1FAE5;
+    --color-success-500: #10B981;
+    --color-success-600: #059669;
+    --color-success-700: #047857;
+
+    --color-warning-50: #FFFBEB;
+    --color-warning-100: #FEF3C7;
+    --color-warning-500: #F59E0B;
+    --color-warning-600: #D97706;
+    --color-warning-700: #B45309;
+
+    --color-error-50: #FEF2F2;
+    --color-error-100: #FEE2E2;
+    --color-error-500: #EF4444;
+    --color-error-600: #DC2626;
+    --color-error-700: #B91C1C;
+
+    --color-info-50: #F0F7FF;
+    --color-info-100: #E0EFFE;
+    --color-info-500: #0C95E9;
+    --color-info-600: #0077C7;
+    --color-info-700: #015FA1;
+
+    /* ---------------------------------------------------------------------
+     Theme Metadata
+     --------------------------------------------------------------------- */
+    --theme-name: "Arktis";
+    --theme-id: "arktis";
+    color-scheme: light;
+}

@@ -1,0 +1,21 @@
+/* ==========================================================================
+   Theme Switcher – Utility
+   ==========================================================================
+   Provides a minimal JavaScript-free way to use themes, plus a JS helper
+   for runtime switching.
+
+   Usage (HTML):
+     <html data-theme="bundeswehr-heer">
+
+   Usage (JS):
+     ThemeSwitcher.setTheme('marine');
+   ========================================================================== */
+
+/* Import all theme files – only the active [data-theme] selector applies */
+@import url("themes/bundeswehr-heer.css");
+@import url("themes/marine.css");
+@import url("themes/wueste.css");
+@import url("themes/arktis.css");
+
+/* Import semantic token mappings */
+@import url("base.css");

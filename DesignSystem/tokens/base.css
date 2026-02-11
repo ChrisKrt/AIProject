@@ -1,0 +1,291 @@
+/* ==========================================================================
+   Design Token System – Bundeswehr Application
+   Base Semantic Tokens
+   ==========================================================================
+   This file defines semantic tokens that map to theme-specific primitive
+   tokens. Load a theme file (e.g., bundeswehr-heer.css) BEFORE this file
+   to supply the primitive values.
+
+   Architecture:
+     1. Primitive tokens  → raw color/value definitions (theme files)
+     2. Semantic tokens    → purpose-based aliases (this file)
+     3. Component tokens   → component-specific overrides (component CSS)
+   ========================================================================== */
+
+:root {
+    /* -----------------------------------------------------------------------
+     Typography
+     ----------------------------------------------------------------------- */
+    --font-family-primary: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --font-family-mono: "Source Code Pro", "Cascadia Code", "Consolas", monospace;
+
+    --font-size-xs: 0.75rem;
+    /* 12px */
+    --font-size-sm: 0.875rem;
+    /* 14px */
+    --font-size-base: 1rem;
+    /* 16px */
+    --font-size-lg: 1.125rem;
+    /* 18px */
+    --font-size-xl: 1.25rem;
+    /* 20px */
+    --font-size-2xl: 1.5rem;
+    /* 24px */
+    --font-size-3xl: 1.875rem;
+    /* 30px */
+    --font-size-4xl: 2.25rem;
+    /* 36px */
+
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    --line-height-tight: 1.25;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+
+    --letter-spacing-tight: -0.025em;
+    --letter-spacing-normal: 0em;
+    --letter-spacing-wide: 0.025em;
+
+    /* -----------------------------------------------------------------------
+     Spacing Scale (4px base unit)
+     ----------------------------------------------------------------------- */
+    --spacing-0: 0;
+    --spacing-1: 0.25rem;
+    /* 4px */
+    --spacing-2: 0.5rem;
+    /* 8px */
+    --spacing-3: 0.75rem;
+    /* 12px */
+    --spacing-4: 1rem;
+    /* 16px */
+    --spacing-5: 1.25rem;
+    /* 20px */
+    --spacing-6: 1.5rem;
+    /* 24px */
+    --spacing-8: 2rem;
+    /* 32px */
+    --spacing-10: 2.5rem;
+    /* 40px */
+    --spacing-12: 3rem;
+    /* 48px */
+    --spacing-16: 4rem;
+    /* 64px */
+    --spacing-20: 5rem;
+    /* 80px */
+    --spacing-24: 6rem;
+    /* 96px */
+
+    /* -----------------------------------------------------------------------
+     Border Radius
+     ----------------------------------------------------------------------- */
+    --radius-none: 0;
+    --radius-sm: 0.125rem;
+    /* 2px */
+    --radius-md: 0.25rem;
+    /* 4px */
+    --radius-lg: 0.5rem;
+    /* 8px */
+    --radius-xl: 0.75rem;
+    /* 12px */
+    --radius-2xl: 1rem;
+    /* 16px */
+    --radius-full: 9999px;
+
+    /* -----------------------------------------------------------------------
+     Shadows
+     ----------------------------------------------------------------------- */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+    /* -----------------------------------------------------------------------
+     Transitions
+     ----------------------------------------------------------------------- */
+    --transition-fast: 150ms ease;
+    --transition-normal: 250ms ease;
+    --transition-slow: 350ms ease;
+
+    /* -----------------------------------------------------------------------
+     Z-Index Scale
+     ----------------------------------------------------------------------- */
+    --z-base: 0;
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-overlay: 300;
+    --z-modal: 400;
+    --z-popover: 500;
+    --z-toast: 600;
+    --z-tooltip: 700;
+
+    /* -----------------------------------------------------------------------
+     Surface / Background (semantic – resolved by theme primitives)
+     ----------------------------------------------------------------------- */
+    --surface-ground: var(--color-neutral-50);
+    --surface-primary: var(--color-neutral-100);
+    --surface-secondary: var(--color-neutral-200);
+    --surface-elevated: var(--color-neutral-0, #ffffff);
+    --surface-inverse: var(--color-neutral-900);
+    --surface-brand: var(--color-primary-600);
+    --surface-brand-subtle: var(--color-primary-50);
+    --surface-overlay: rgb(0 0 0 / 0.5);
+
+    /* -----------------------------------------------------------------------
+     Text Colors
+     ----------------------------------------------------------------------- */
+    --text-primary: var(--color-neutral-900);
+    --text-secondary: var(--color-neutral-600);
+    --text-tertiary: var(--color-neutral-500);
+    --text-disabled: var(--color-neutral-400);
+    --text-inverse: var(--color-neutral-50);
+    --text-on-brand: var(--color-primary-50);
+    --text-link: var(--color-primary-600);
+    --text-link-hover: var(--color-primary-700);
+
+    /* -----------------------------------------------------------------------
+     Border Colors
+     ----------------------------------------------------------------------- */
+    --border-default: var(--color-neutral-200);
+    --border-strong: var(--color-neutral-400);
+    --border-subtle: var(--color-neutral-100);
+    --border-inverse: var(--color-neutral-800);
+    --border-brand: var(--color-primary-600);
+    --border-focus: var(--color-primary-500);
+
+    /* -----------------------------------------------------------------------
+     Interactive / Action Colors
+     ----------------------------------------------------------------------- */
+    --interactive-primary: var(--color-primary-600);
+    --interactive-primary-hover: var(--color-primary-700);
+    --interactive-primary-active: var(--color-primary-800);
+    --interactive-primary-disabled: var(--color-primary-300);
+
+    --interactive-secondary: var(--color-secondary-600);
+    --interactive-secondary-hover: var(--color-secondary-700);
+    --interactive-secondary-active: var(--color-secondary-800);
+    --interactive-secondary-disabled: var(--color-secondary-300);
+
+    --interactive-neutral: var(--color-neutral-200);
+    --interactive-neutral-hover: var(--color-neutral-300);
+    --interactive-neutral-active: var(--color-neutral-400);
+
+    /* -----------------------------------------------------------------------
+     Focus Ring
+     ----------------------------------------------------------------------- */
+    --focus-ring-color: var(--color-primary-400);
+    --focus-ring-offset: 2px;
+    --focus-ring-width: 2px;
+    --focus-ring: var(--focus-ring-width) solid var(--focus-ring-color);
+
+    /* -----------------------------------------------------------------------
+     Status / Feedback Colors
+     ----------------------------------------------------------------------- */
+    --status-success: var(--color-success-600);
+    --status-success-subtle: var(--color-success-50);
+    --status-success-text: var(--color-success-700);
+
+    --status-warning: var(--color-warning-500);
+    --status-warning-subtle: var(--color-warning-50);
+    --status-warning-text: var(--color-warning-700);
+
+    --status-error: var(--color-error-600);
+    --status-error-subtle: var(--color-error-50);
+    --status-error-text: var(--color-error-700);
+
+    --status-info: var(--color-info-500);
+    --status-info-subtle: var(--color-info-50);
+    --status-info-text: var(--color-info-700);
+
+    /* -----------------------------------------------------------------------
+     Component Tokens – Buttons
+     ----------------------------------------------------------------------- */
+    --button-primary-bg: var(--interactive-primary);
+    --button-primary-bg-hover: var(--interactive-primary-hover);
+    --button-primary-bg-active: var(--interactive-primary-active);
+    --button-primary-text: var(--text-on-brand);
+    --button-primary-border: var(--interactive-primary);
+
+    --button-secondary-bg: transparent;
+    --button-secondary-bg-hover: var(--interactive-neutral-hover);
+    --button-secondary-bg-active: var(--interactive-neutral-active);
+    --button-secondary-text: var(--text-primary);
+    --button-secondary-border: var(--border-strong);
+
+    --button-danger-bg: var(--status-error);
+    --button-danger-bg-hover: var(--color-error-700);
+    --button-danger-text: #ffffff;
+
+    --button-border-radius: var(--radius-md);
+    --button-padding-x: var(--spacing-4);
+    --button-padding-y: var(--spacing-2);
+    --button-font-weight: var(--font-weight-semibold);
+
+    /* -----------------------------------------------------------------------
+     Component Tokens – Cards
+     ----------------------------------------------------------------------- */
+    --card-bg: var(--surface-elevated);
+    --card-border: var(--border-default);
+    --card-border-radius: var(--radius-lg);
+    --card-shadow: var(--shadow-sm);
+    --card-padding: var(--spacing-6);
+
+    /* -----------------------------------------------------------------------
+     Component Tokens – Inputs
+     ----------------------------------------------------------------------- */
+    --input-bg: var(--surface-elevated);
+    --input-border: var(--border-default);
+    --input-border-hover: var(--border-strong);
+    --input-border-focus: var(--border-brand);
+    --input-border-error: var(--status-error);
+    --input-text: var(--text-primary);
+    --input-placeholder: var(--text-tertiary);
+    --input-border-radius: var(--radius-md);
+    --input-padding-x: var(--spacing-3);
+    --input-padding-y: var(--spacing-2);
+
+    /* -----------------------------------------------------------------------
+     Component Tokens – Navigation
+     ----------------------------------------------------------------------- */
+    --nav-bg: var(--surface-brand);
+    --nav-text: var(--text-on-brand);
+    --nav-text-active: #ffffff;
+    --nav-indicator: var(--color-accent-400, var(--color-primary-300));
+    --nav-border: var(--color-primary-800);
+
+    /* -----------------------------------------------------------------------
+     Component Tokens – Sidebar
+     ----------------------------------------------------------------------- */
+    --sidebar-bg: var(--color-neutral-900);
+    --sidebar-text: var(--color-neutral-200);
+    --sidebar-text-active: #ffffff;
+    --sidebar-hover-bg: var(--color-neutral-800);
+    --sidebar-active-bg: var(--color-primary-700);
+    --sidebar-border: var(--color-neutral-800);
+
+    /* -----------------------------------------------------------------------
+     Component Tokens – Badges
+     ----------------------------------------------------------------------- */
+    --badge-success-bg: var(--status-success-subtle);
+    --badge-success-text: var(--status-success-text);
+    --badge-warning-bg: var(--status-warning-subtle);
+    --badge-warning-text: var(--status-warning-text);
+    --badge-error-bg: var(--status-error-subtle);
+    --badge-error-text: var(--status-error-text);
+    --badge-info-bg: var(--status-info-subtle);
+    --badge-info-text: var(--status-info-text);
+    --badge-neutral-bg: var(--color-neutral-100);
+    --badge-neutral-text: var(--color-neutral-700);
+
+    /* -----------------------------------------------------------------------
+     Component Tokens – Tables
+     ----------------------------------------------------------------------- */
+    --table-header-bg: var(--color-neutral-100);
+    --table-header-text: var(--text-primary);
+    --table-row-bg: var(--surface-elevated);
+    --table-row-bg-alt: var(--color-neutral-50);
+    --table-row-hover: var(--color-primary-50);
+    --table-border: var(--border-default);
+}

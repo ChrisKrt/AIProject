@@ -1,0 +1,104 @@
+/* ==========================================================================
+   Theme: Bundeswehr Heer (Grün/Braun)
+   ==========================================================================
+   Standard-Tarnfarben der deutschen Streitkräfte (Heer).
+   Basiert auf RAL 6031 Bronzegrün und RAL 8027 Lederbraun.
+   ========================================================================== */
+
+[data-theme="bundeswehr-heer"],
+.theme-bundeswehr-heer {
+    /* ---------------------------------------------------------------------
+     Primary Scale – Olivgrün
+     --------------------------------------------------------------------- */
+    --color-primary-50: #F4F5F0;
+    --color-primary-100: #E4E7DA;
+    --color-primary-200: #C9CFB5;
+    --color-primary-300: #A7B086;
+    --color-primary-400: #87945E;
+    --color-primary-500: #6B7A3D;
+    --color-primary-600: #556230;
+    --color-primary-700: #434D26;
+    --color-primary-800: #363E20;
+    --color-primary-900: #2C331C;
+    --color-primary-950: #181C0E;
+
+    /* ---------------------------------------------------------------------
+     Secondary Scale – Braun (Lederbraun)
+     --------------------------------------------------------------------- */
+    --color-secondary-50: #F7F3F0;
+    --color-secondary-100: #EBE1D9;
+    --color-secondary-200: #D6C3B3;
+    --color-secondary-300: #BC9E84;
+    --color-secondary-400: #A47D5E;
+    --color-secondary-500: #8B6544;
+    --color-secondary-600: #6F4F35;
+    --color-secondary-700: #5A3E2C;
+    --color-secondary-800: #4A3326;
+    --color-secondary-900: #3D2B21;
+    --color-secondary-950: #211612;
+
+    /* ---------------------------------------------------------------------
+     Accent Scale – Khaki / Sand
+     --------------------------------------------------------------------- */
+    --color-accent-50: #FAFAF5;
+    --color-accent-100: #F0EDDF;
+    --color-accent-200: #E0DABF;
+    --color-accent-300: #CCC19A;
+    --color-accent-400: #B8A87A;
+    --color-accent-500: #A49260;
+    --color-accent-600: #887849;
+    --color-accent-700: #6E603A;
+    --color-accent-800: #5A4F33;
+    --color-accent-900: #4B422D;
+    --color-accent-950: #2A2417;
+
+    /* ---------------------------------------------------------------------
+     Neutral Scale – Warmgrau
+     --------------------------------------------------------------------- */
+    --color-neutral-0: #FFFFFF;
+    --color-neutral-50: #F5F5F3;
+    --color-neutral-100: #E8E7E4;
+    --color-neutral-200: #D1CFCB;
+    --color-neutral-300: #B3B0AA;
+    --color-neutral-400: #949089;
+    --color-neutral-500: #7A756E;
+    --color-neutral-600: #635F58;
+    --color-neutral-700: #514D48;
+    --color-neutral-800: #44413D;
+    --color-neutral-900: #3B3836;
+    --color-neutral-950: #22201F;
+
+    /* ---------------------------------------------------------------------
+     Status Colors
+     --------------------------------------------------------------------- */
+    --color-success-50: #F0F7F0;
+    --color-success-100: #DCEBDC;
+    --color-success-500: #3D8B40;
+    --color-success-600: #2E7D32;
+    --color-success-700: #256427;
+
+    --color-warning-50: #FFF8E6;
+    --color-warning-100: #FFECB3;
+    --color-warning-500: #F9A825;
+    --color-warning-600: #F57F17;
+    --color-warning-700: #E65100;
+
+    --color-error-50: #FFF0F0;
+    --color-error-100: #FFDADA;
+    --color-error-500: #D32F2F;
+    --color-error-600: #C62828;
+    --color-error-700: #B71C1C;
+
+    --color-info-50: #EDF4FC;
+    --color-info-100: #D0E3F7;
+    --color-info-500: #1976D2;
+    --color-info-600: #1565C0;
+    --color-info-700: #0D47A1;
+
+    /* ---------------------------------------------------------------------
+     Theme Metadata
+     --------------------------------------------------------------------- */
+    --theme-name: "Bundeswehr Heer";
+    --theme-id: "bundeswehr-heer";
+    color-scheme: light;
+}
