@@ -1,4 +1,3 @@
-
 <!-- BACKLOG.MD GUIDELINES START -->
 # Instructions for the usage of Backlog.md CLI Tool
 
@@ -59,9 +58,9 @@ remains fully synchronized and up-to-date.
 ### 📖 **UNDERSTANDING** (What you'll see when reading)
 
 - Markdown task files live under **`backlog/tasks/`** (drafts under **`backlog/drafts/`**)
-- Files are named: `task-<id> - <title>.md` (e.g., `task-42 - Add GraphQL resolver.md`)
+- Files are named: `pbi-<id> - <title>.md` (e.g., `pbi-42 - Add GraphQL resolver.md`)
 - Project documentation is in **`backlog/docs/`**
-- Project decisions are in **`backlog/decisions/`**
+- Project decisions (incl. Architecture Decision Records) are in **`backlog/decisions/`**
 
 ### 🔧 **ACTING** (How to change things)
 

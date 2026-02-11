@@ -1,0 +1,12 @@
+{
+	"servers": {
+		"backlog.md": {
+			"command": "backlog",
+			"args": [
+				"mcp",
+				"start"
+			]
+		}
+	},
+	"inputs": []
+}
