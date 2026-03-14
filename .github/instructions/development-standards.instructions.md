@@ -22,7 +22,7 @@
 - write unit tests for public methods
 - name classes, files, methods, and variables in English
 - name classes, files, methods, and variables with descriptive names that reflect their purpose (domain related)
-- private methods should be static methods
+- private methods should be static methods and pure functions if possible
 - use domain driven design principles to model the domain
 - domain related logic should be encapsulated in domain entities
 - domain logic does mostly not need interfaces, despite for the strategy pattern
@@ -44,6 +44,7 @@
 - cross cutting concerns include logging, caching, authentication, authorization, and error handling, notifications
 - Notifications / Alerts / Messages to the user are handled by a frontend project
 - Keep methods/functions flat, they should not have a high cyclomatic complexity
+- Pure functions are preferred, they should not have side effects and should always return the same output for the same input. They are easier to test and reason about.
 - Use the commitizen command line tool to create commit messages (e.g. `cz commit`)
 
 - follow the Architectural Decision Records (ADRs) for architectural decisions in the project, which are stored in the `backlog/decisions` directory

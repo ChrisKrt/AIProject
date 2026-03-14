@@ -5,7 +5,7 @@ description: Guide how to create a new branch to work on an issue
 # Skill: Create Branch
 
 ## Purpose
-This skill provides instructions on how to create branches correctly according to the OneBookshelf project's branching conventions. The project uses **trunk-based development** with specific naming patterns for different types of work.
+This skill provides instructions on how to create branches correctly according to the project's branching conventions. The project uses **trunk-based development** with specific naming patterns for different types of work.
 
 ## When to Use This Skill
 Use this skill when:
@@ -16,7 +16,7 @@ Use this skill when:
 
 ## Branch Naming Conventions
 
-OneBookshelf uses grouped branch naming with three distinct patterns:
+The project uses grouped branch naming with three distinct patterns:
 
 ### 1. Feature Branches
 **Pattern:** `feature/#<user-story-number>-<user-story-description>`
