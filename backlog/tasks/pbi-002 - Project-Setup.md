@@ -17,6 +17,8 @@ ordinal: 2000
 
 <!-- SECTION:DESCRIPTION:BEGIN -->
 Setup the project infrastructure according to all ADRs. Establish monorepo structure, build tooling, domain architecture, PWA, plugin system, and workflows. Follow ADR-008, ADR-009, ADR-019, ADR-022, ADR-002, ADR-003, ADR-010, ADR-014, ADR-015, ADR-017. Ensure all critical directories, configs, and dependencies are present. Use Svelte as the main UI framework. Verify setup with dev/build/test commands.
+
+
 <!-- SECTION:DESCRIPTION:END -->
 
 ## Acceptance Criteria
