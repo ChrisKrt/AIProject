@@ -1,0 +1,25 @@
+project_name: "AIProject"
+default_status: "Idea"
+statuses: ["Idea", "Refinement", "To Do", "In Progress", "Review", "Test", "Integration", "Done"]
+labels: ["Bug", "Task", "User Story"]
+milestones: []
+date_format: yyyy-mm-dd
+max_column_width: 15
+auto_open_browser: true
+default_port: 6420
+remote_operations: true
+auto_commit: false
+zero_padded_ids: 3
+bypass_git_hooks: false
+check_active_branches: true
+active_branch_days: 30
+task_prefix: "PBI"
+definition_of_done:
+  - Unit Tests written
+  - Code reviewed
+  - Unit Tests pass
+  - ATDD / BDD scenarios pass
+  - Documentation updated
+  - User Guide updated
+  - Admin Guide updated
+  - No regressions introduced
