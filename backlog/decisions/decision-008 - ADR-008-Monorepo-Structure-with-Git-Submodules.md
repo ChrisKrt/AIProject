@@ -1,26 +1,28 @@
 ---
 id: decision-008
-title: 'ADR-008: Monorepo Structure with Git Submodules'
+title: 'ADR-008: Monorepo with Plugin Submodules and External Component Library'
 date: '2026-02-09 18:18'
 status: proposed
 ---
 ## Context
-The project consists of multiple components that are developed in different technologies but share common code and architectural decisions. Managing these components in a single repository (monorepo) can simplify dependency management, code sharing, and coordinated releases. However, some components may be developed or maintained independently, or reused in other contexts.
+The application consists of a core shell with pluggable extensions. The shell and its core functionality must be tightly integrated, reducing friction for frequent changes. Plugins, however, can be developed, versioned, and deployed independently. UI components (buttons, forms, dialogs, etc.) are sourced from an external, maintained component library to ensure consistency and avoid code duplication.
 
 ## Decision
-We will use a monorepo to manage all major components of the project. To allow for independent versioning and external reuse, some subprojects (such as shared libraries or external dependencies) will be included as git submodules.
+We use a monorepo structure for the core shell application. Plugins are managed as git submodules to enable independent development and versioning. Shared UI components are provided by an external component library accessed via package manager or CDN. Custom shared components may be managed in a dedicated repository and linked via git subtree in the future.
 
-- The main repository will contain the overall project structure, documentation, and integration scripts.
-- Submodules will be used for components that are shared with or reused by other projects, or that require independent versioning.
-- All contributors must initialize and update submodules when cloning or pulling the repository.
+- The main repository contains the shell application code, documentation, and core logic.
+- Plugins are included as git submodules, each with independent versioning and release cycle.
+- Shared UI components are pulled from an external, centrally maintained component library.
+- Custom shared components (if needed) will be managed in a separate repository and linked via git subtree.
 
 ## Consequences
-- Simplifies cross-component changes and code sharing.
-- Enables independent development and versioning of reusable components.
-- Requires contributors to be familiar with git submodules and related workflows.
-- CI/CD and tooling must support submodule initialization and updates.
+- Core application and plugins develop at different velocities without friction.
+- Developers must initialize and update submodules; CI/CD must support this workflow.
+- UI consistency is enforced by the external component library.
+- Custom component repository remains optional and can be introduced when needed without architecture disruption.
 
 ## Alternatives Considered
-- Multiple independent repositories: increases overhead for cross-component changes and integration.
-- Monorepo without submodules: makes it harder to reuse or independently version shared components.
+- All code in single repository: loses plugin independence and complicates plugin deployment.
+- All plugins as separate repositories: increases integration friction for shell-plugin synchronization.
+- Custom in-house component library: duplicates effort; external library is mature and maintained.
 
