@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SILENT SENTINEL | IMINT ANALYSIS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;900&amp;family=Source+Code+Pro:wght@400;500;700&amp;family=Source+Sans+3:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#3D5F96", // Marineblau
+                "on-primary": "#FFFFFF",
+                "secondary": "#607383", // Stahlgrau
+                "accent": "#3B82F6", // Signalblau
+                "background": "#0F172A", // Deep Navy
+                "surface": "rgba(30, 41, 59, 0.45)", // Liquid Glass Base
+                "surface-container": "rgba(51, 65, 85, 0.3)",
+                "surface-container-high": "rgba(71, 85, 105, 0.4)",
+                "surface-container-low": "rgba(15, 23, 42, 0.5)",
+                "surface-container-lowest": "rgba(2, 6, 23, 0.6)",
+                "on-surface": "#F1F5F9",
+                "on-surface-variant": "#94A3B8",
+                "outline": "rgba(71, 85, 105, 0.3)",
+                "outline-variant": "rgba(30, 41, 59, 0.2)",
+                "error": "#EF4444",
+                "error-container": "#7F1D1D",
+                "on-error-container": "#FEE2E2"
+              },
+              fontFamily: {
+                "headline": ["Public Sans"],
+                "body": ["Source Sans 3"],
+                "label": ["Source Code Pro"]
+              },
+              borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+              backdropBlur: {
+                "xs": "2px",
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+        .data-grid {
+            background-image: radial-gradient(circle, rgba(51, 65, 85, 0.3) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .liquid-panel {
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #3D5F96; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-accent selection:text-white h-screen overflow-hidden flex flex-col relative">
+<!-- FULL SCREEN BACKGROUND IMAGERY -->
+<div class="fixed inset-0 z-0 flex">
+<div class="flex-1 relative overflow-hidden">
+<img class="w-full h-full object-cover grayscale brightness-[0.4] contrast-125" data-alt="Satellite imagery of a coastal industrial area" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR5LlzlwAViFs4ODExMuGcLuIcEUN8N3_dG60KW7lUXdo2I6mMzTKDl7nZyZluLfl-6OQGtCH5cLjX7pE2g3kLllfOvUVQtKCh6JpOwyR_REux8EE9TEcb0iHma4Z9AYCUNdN2b5jaZAviET65zc_GJbvxN-5IJUvcZx6Ps1CT7ESQbKwOlins6Jpr-ArzbyxuvvgQDK-qfexCSo1mxc8EzZr-xRtXwA9DwmNScn_OlLj0AeNEhbC4nwDr1R4PfS2kgh0E1Bf7Euk" style=""/>
+<div class="absolute inset-0 data-grid opacity-20"></div>
+</div>
+<div class="flex-1 relative overflow-hidden">
+<img class="w-full h-full object-cover brightness-[0.4] contrast-150" data-alt="Modern satellite view showing urban development" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPUI4-Gvfo876Q8NCScSIcAW7RP5YfIqB9nIF4t7A3Md12JXUbM8cRUxcyIELvkJ4F6lMLpziN96yRJL--bgki0O9FOApPt7KKlRsBfhNB5sYeV-_rOYwXX14_KCM7LPJAYbNzzW3Zf9P8V6vAyQad-jffGSNtMGSanq1P5MZ5P8rkHtp5qTtRAWNl1Qbom6R2OdvL9PvLtoxnuVhSxTWJl8cJ-1-nZD4E9cuKUpWVyrYUX2vcvaVsuLLuLuDWwnT2UWqhiqfaPko" style=""/>
+</div>
+</div>
+<!-- TopNavBar -->
+<header class="bg-[#020617]/80 backdrop-blur-md text-secondary font-['Public_Sans'] uppercase tracking-[0.05em] text-sm font-bold docked full-width top-0 h-10 flex justify-between items-center px-3 w-full z-50 border-b border-primary/20">
+<div class="flex items-center gap-6">
+<span class="font-['Public_Sans'] font-black text-on-surface tracking-tighter text-base" style="">SILENT SENTINEL</span>
+<nav class="hidden md:flex items-center gap-4 h-10">
+<a class="text-secondary hover:text-on-surface transition-colors h-full flex items-center px-2" href="#" style="">OP_NEPTUNE</a>
+<a class="text-on-surface border-b-2 border-accent bg-white/5 transition-colors h-full flex items-center px-2" href="#" style="">IMINT_ANALYSIS</a>
+<a class="text-secondary hover:text-on-surface transition-colors h-full flex items-center px-2" href="#" style="">RECON_PHASE</a>
+</nav>
+</div>
+<div class="flex items-center gap-3">
+<div class="bg-white/5 px-2 py-0.5 flex items-center gap-2 border border-white/10">
+<span class="material-symbols-outlined text-xs text-secondary" style="">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-[10px] w-32 font-label uppercase text-on-surface placeholder:text-secondary" placeholder="COORD_SEARCH..." type="text"/>
+</div>
+<button class="material-symbols-outlined hover:bg-white/10 p-1 transition-colors text-secondary" style="">notifications_active</button>
+<button class="material-symbols-outlined hover:bg-white/10 p-1 transition-colors text-secondary" style="">account_circle</button>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden relative z-10">
+<!-- SideNavBar -->
+<aside class="bg-[#020617]/40 backdrop-blur-md text-secondary font-['Source_Code_Pro'] text-[10px] docked left-0 h-full w-16 flex flex-col items-center py-4 space-y-4 z-40 border-r border-primary/20">
+<div class="flex flex-col items-center gap-4 w-full">
+<div class="w-10 h-10 bg-primary/20 flex items-center justify-center mb-2 border border-primary/30">
+<span class="material-symbols-outlined text-accent" style="">navigation</span>
+</div>
+<button class="flex flex-col items-center gap-1 w-full py-2 border-l-2 border-accent bg-primary/20 text-on-surface transition-all duration-150" style="">
+<span class="material-symbols-outlined" style="">layers</span>
+<span class="" style="">IMINT</span>
+</button>
+<button class="flex flex-col items-center gap-1 w-full py-2 text-secondary hover:text-on-surface transition-all duration-150" style="">
+<span class="material-symbols-outlined" style="">sensors</span>
+<span class="" style="">SIGINT</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex overflow-hidden relative">
+<!-- LEFT SIDEBAR: Object Detection (Liquid Glass) -->
+<section class="w-64 liquid-panel m-3 rounded-none flex flex-col"><div class="p-3 border-b border-white/10 flex justify-between items-center bg-primary/10">
+<h2 class="text-[10px] font-label font-bold text-accent uppercase tracking-widest">OBJ_DETECTION</h2>
+<span class="bg-error-container/80 text-on-error-container px-1 text-[9px] font-bold">LIVE</span>
+</div>
+<div class="flex-1"></div></section>
+<!-- CENTER: View Overlay -->
+<section class="flex-1 flex flex-col relative">
+<!-- Editor Toolbar -->
+<div class="h-10 liquid-panel mx-3 mt-3 flex items-center px-4 justify-between">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1 text-[10px] font-label text-on-surface" style="">
+<span class="material-symbols-outlined !text-sm text-accent" style="">compare</span>
+                            SPLIT_VIEW: DIFF_ANALYSIS
+                        </div>
+<div class="h-4 w-px bg-white/10"></div>
+<div class="flex gap-2">
+<button class="text-[9px] px-2 py-0.5 bg-primary text-white font-bold" style="">RGB</button>
+<button class="text-[9px] px-2 py-0.5 bg-white/5 text-secondary font-bold hover:bg-white/10" style="">IR</button>
+<button class="text-[9px] px-2 py-0.5 bg-white/5 text-secondary font-bold hover:bg-white/10" style="">SAR</button>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-[10px] font-label text-on-surface-variant" style="">ZOOM: 400%</span>
+<span class="material-symbols-outlined !text-sm text-accent cursor-pointer" style="">gps_fixed</span>
+</div>
+</div>
+<!-- Central HUD area -->
+<div class="flex-1 flex relative">
+<!-- Historical label overlay -->
+<!-- Current label overlay -->
+<!-- Split Slider Handle -->
+<div class="absolute inset-y-0 left-1/2 w-[1px] bg-accent/40 flex items-center justify-center -translate-x-1/2 z-30">
+<div class="w-8 h-8 liquid-panel text-white flex items-center justify-center rounded-full shadow-xl cursor-col-resize hover:bg-primary/40 transition-colors">
+<span class="material-symbols-outlined !text-sm" style="">unfold_more</span>
+</div>
+</div>
+<!-- Detection UI Overlay (Center-aligned) -->
+<div class="absolute inset-0 pointer-events-none z-10">
+<div class="absolute top-1/2 left-3/4 -translate-x-1/2 -translate-y-1/2 w-48 h-36 border border-error/50 bg-error/5 flex items-start justify-end p-1">
+<span class="text-[8px] bg-error text-white font-bold px-1" style="">NEW_SIG_DETECTED</span>
+</div>
+</div>
+</div>
+</section>
+<!-- RIGHT SIDEBAR: Metadata & Telemetry (Liquid Glass) -->
+<section class="w-72 liquid-panel m-3 rounded-none flex flex-col"><div class="p-3 border-b border-white/10 bg-primary/10">
+<h2 class="text-[10px] font-label font-bold text-accent uppercase tracking-widest">METADATA_STREAM</h2>
+</div>
+<div class="flex-1"></div></section>
+</main>
+</div>
+<!-- BottomNavBar -->
+<footer class="bg-primary/90 backdrop-blur-md text-on-primary font-['Source_Code_Pro'] text-[11px] font-medium fixed bottom-0 w-full z-50 flex justify-start items-center space-x-4 px-2 h-6 border-t border-white/10">
+<div class="bg-black/20 px-3 h-full flex items-center hover:bg-accent cursor-pointer transition-colors">
+<span class="material-symbols-outlined !text-sm mr-1" style="">location_on</span>
+<span class="" style="">52.5200° N, 13.4050° E</span>
+</div>
+<div class="px-3 h-full flex items-center text-on-primary/80 hover:bg-black/20 cursor-pointer transition-colors">
+<span class="material-symbols-outlined !text-sm mr-1" style='font-variation-settings: "FILL" 1;'>lock</span>
+<span class="" style="">ENC: AES-256</span>
+</div>
+<div class="px-3 h-full flex items-center text-on-primary/80 hover:bg-black/20 cursor-pointer transition-colors">
+<span class="material-symbols-outlined !text-sm mr-1" style="">terminal</span>
+<span class="" style="">SYS_TERMINAL</span>
+</div>
+<div class="ml-auto flex items-center gap-4 text-[9px] pr-2">
+<span class="" style="">UPLINK: STABLE</span>
+<span class="" style="">LATENCY: 12ms</span>
+<div class="flex gap-0.5 h-2 items-end">
+<div class="w-0.5 h-1 bg-white"></div>
+<div class="w-0.5 h-2 bg-white"></div>
+<div class="w-0.5 h-1.5 bg-white"></div>
+<div class="w-0.5 h-3 bg-white"></div>
+</div>
+</div>
+</footer>
+</body></html>
