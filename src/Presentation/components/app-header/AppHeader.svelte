@@ -67,15 +67,13 @@
 
     <nav class={styles.header__nav} aria-label="Primary navigation">
       {#each NAV_LINKS as { module, label }}
-        <!-- svelte-ignore a11y_no_static_element_interactions -->
-        <!-- svelte-ignore a11y_click_events_have_key_events -->
         <wa-button
           class="{styles['header__nav-link']} {activeModule === module
             ? styles['header__nav-link--active']
             : ''}"
           appearance="plain"
           aria-current={activeModule === module ? "page" : "false"}
-          onclick={() => handleModuleClick(module)}
+          on:click={() => handleModuleClick(module)}
         >
           {label}
         </wa-button>

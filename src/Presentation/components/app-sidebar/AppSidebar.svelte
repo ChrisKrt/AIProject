@@ -68,8 +68,6 @@
   >
     {#each SIDEBAR_NAV_ITEMS as { item, icon, label }}
       <wa-tooltip content={label} placement="right">
-        <!-- svelte-ignore a11y_no_static_element_interactions -->
-        <!-- svelte-ignore a11y_click_events_have_key_events -->
         <wa-button
           class="{styles['sidebar__item']} {activeSidebarItem === item
             ? styles['sidebar__item--active']
@@ -77,7 +75,7 @@
           appearance="plain"
           aria-label="{label} module"
           aria-current={activeSidebarItem === item ? "true" : "false"}
-          onclick={() => handleItemClick(item)}
+          on:click={() => handleItemClick(item)}
         >
           <wa-icon name={icon} aria-hidden="true"></wa-icon>
           <span class={styles["sidebar__item-label"]}>{label}</span>
