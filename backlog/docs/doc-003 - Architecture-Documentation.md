@@ -32,32 +32,28 @@ Key functional requirements for the application shell:
 
 ## Quality Goals {#_quality_goals}
 
-| Priority | Quality Goal | Description |
-|----------|-------------|-------------|
-| 1 | Offline Capability | Application works without network connectivity |
-| 2 | Accessibility | WCAG AA compliance for all interactive elements |
-| 3 | Responsiveness | Layout adapts from smartphone to desktop viewports |
-| 4 | Performance | Fast initial load and smooth navigation transitions |
-| 5 | Maintainability | Clean architecture with separated concerns |
+| Priority | Quality Goal       | Description                                         |
+| -------- | ------------------ | --------------------------------------------------- |
+| 1        | Offline Capability | Application works without network connectivity      |
+| 2        | Accessibility      | WCAG AA compliance for all interactive elements     |
+| 3        | Responsiveness     | Layout adapts from smartphone to desktop viewports  |
+| 4        | Performance        | Fast initial load and smooth navigation transitions |
+| 5        | Maintainability    | Clean architecture with separated concerns          |
 
 ## Stakeholders {#_stakeholders}
 
-| Role | Expectations |
-|------|-------------|
-| Tactical Operator | Efficient navigation, minimal cognitive load, works offline |
-| System Administrator | Easy deployment, configuration via environment variables |
-| Developer | Clean architecture, testable components, clear conventions |
+See [Stakeholders](doc-004%20-%20Product-Requirements-Document.md#section-stakeholder) in the Product Requirements Document.
 
 # Architecture Constraints {#section-architecture-constraints}
 
-| Constraint | Description |
-|-----------|-------------|
-| Fat Client (ADR-001) | No mandatory backend server; all logic runs in the browser |
-| PWA (ADR-002) | Installable, offline-capable Progressive Web App |
-| Client-Side Rendering (ADR-003) | UI rendered in browser using Web Components and Svelte |
-| WebAwesome Components (ADR-010) | Shoelace-based Web Components for UI consistency |
-| Bundeswehr Design System (ADR-012) | Domain-specific themes define visual identity |
-| 12-Factor Configuration (ADR-014) | All configuration via environment variables |
+| Constraint                         | Description                                                |
+| ---------------------------------- | ---------------------------------------------------------- |
+| Fat Client (ADR-001)               | No mandatory backend server; all logic runs in the browser |
+| PWA (ADR-002)                      | Installable, offline-capable Progressive Web App           |
+| Client-Side Rendering (ADR-003)    | UI rendered in browser using Web Components and Svelte     |
+| WebAwesome Components (ADR-010)    | Shoelace-based Web Components for UI consistency           |
+| Bundeswehr Design System (ADR-012) | Domain-specific themes define visual identity              |
+| 12-Factor Configuration (ADR-014)  | All configuration via environment variables                |
 
 # Context and Scope {#section-context-and-scope}
 
@@ -67,11 +63,11 @@ SILENT SENTINEL operates as a standalone browser application. It does not requir
 
 ## Technical Context {#_technical_context}
 
-| Interface | Technology | Purpose |
-|-----------|-----------|---------|
-| Browser | Web Platform APIs | Application runtime environment |
-| BroadcastChannel | Browser API | Multi-tab state synchronization (ADR-023) |
-| Cloud Storage | HTTP + OIDC | Optional file access (ADR-007) |
+| Interface        | Technology        | Purpose                                   |
+| ---------------- | ----------------- | ----------------------------------------- |
+| Browser          | Web Platform APIs | Application runtime environment           |
+| BroadcastChannel | Browser API       | Multi-tab state synchronization (ADR-023) |
+| Cloud Storage    | HTTP + OIDC       | Optional file access (ADR-007)            |
 
 # Solution Strategy {#section-solution-strategy}
 
@@ -215,38 +211,20 @@ Architecture decisions are documented as ADRs in `backlog/decisions/`. Key decis
 - ADR-021: Responsive Design
 - ADR-023: Multitab Broadcasting
 
-# Quality Requirements {#section-quality-scenarios}
+# Quality Scenarios {#section-quality-scenarios}
 
-## Quality Requirements Overview {#_quality_requirements_overview}
-
-| Quality Attribute | Scenario | Target |
-|-------------------|----------|--------|
-| Accessibility | Screen reader navigates header and sidebar | All regions announced with correct labels |
-| Accessibility | Keyboard-only user navigates controls | All interactive elements reachable via Tab |
-| Responsiveness | Viewport resized to 375px | Sidebar hidden, layout remains usable |
-| Performance | Initial page load on desktop | First Contentful Paint under 2 seconds |
-| Offline | Network disconnected after load | Application remains fully functional |
-
-## Quality Scenarios {#_quality_scenarios}
+For quality requirements see [Quality Requirements](doc-004%20-%20Product-Requirements-Document.md#section-quality-requirements) in the Product Requirements Document.
 
 See `backlog/assets/PBI-005.feature` for detailed BDD scenarios covering accessibility, responsiveness, and visual design quality attributes.
 
 # Risks and Technical Debts {#section-technical-risks}
 
-| Risk / Debt | Description | Mitigation |
-|-------------|-------------|------------|
-| WebAwesome aria-current reflection | wa-button custom elements may not reflect aria-current as a standard DOM attribute, causing E2E test instability | Use CSS class checks or DOM evaluate in E2E tests |
-| Single active module | Only OP_NEPTUNE is currently active; other modules are commented out | Enable modules as features are implemented |
-| No backend API | No REST API implemented yet (ADR-024 planned) | API layer to be added when backend features are needed |
+| Risk / Debt                        | Description                                                                                                      | Mitigation                                             |
+| ---------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| WebAwesome aria-current reflection | wa-button custom elements may not reflect aria-current as a standard DOM attribute, causing E2E test instability | Use CSS class checks or DOM evaluate in E2E tests      |
+| Single active module               | Only OP_NEPTUNE is currently active; other modules are commented out                                             | Enable modules as features are implemented             |
+| No backend API                     | No REST API implemented yet (ADR-024 planned)                                                                    | API layer to be added when backend features are needed |
 
 # Glossary {#section-glossary}
 
-| Term | Definition |
-|------|-----------|
-| SILENT SENTINEL | Application name for the tactical intelligence analysis platform |
-| OP_NEPTUNE | Operational module identifier for the primary navigation |
-| IMINT | Imagery Intelligence – a discipline for image-based analysis |
-| SIGINT | Signals Intelligence – a discipline for signal-based analysis |
-| Glassmorphism | Visual design effect using backdrop blur and semi-transparent backgrounds |
-| Liquid Glass | Panel design pattern using glassmorphism with 12px backdrop blur |
-| Marine Theme | Bundeswehr domain-specific color theme using Navy and Marine Blue tones |
+See [Glossary – Ubiquitous Language](doc-005%20-%20Glossary-Ubiquitous-Language.md) for all term definitions.

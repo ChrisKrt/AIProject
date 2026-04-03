@@ -54,6 +54,10 @@ Create Gherkin feature file for acceptance criteria:
 - Saves to `backlog/assets/<task-prefix>-<taskId>.feature`
 - Enables test-driven development
 
+
+### 6. Update PBI References
+4. Add a row to the relevant EPIC table in the Product Requirements Document, referencing the PBI file. (backlog\docs\doc-004 - Product-Requirements-Document.md)
+
 ## Validation Checklist
 - [ ] Task viewed and understood
 - [ ] Status changed to "Refinement"

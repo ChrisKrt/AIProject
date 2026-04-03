@@ -31,12 +31,12 @@ updated_date: '2026-04-03 18:54'
 
 # Stakeholder {#section-stakeholder}
 
-| Role | Person | Topic | Influence |
-|------|--------|-------|-----------|
-| Tactical Operator | End users | Day-to-day intelligence analysis workflows | High |
-| System Administrator | IT staff | Deployment, configuration, maintenance | Medium |
-| Product Owner | Project lead | Requirements, priorities, acceptance | High |
-| Developer | Engineering team | Implementation, architecture, testing | Medium |
+| Role                 | Person           | Topic                                      | Influence |
+| -------------------- | ---------------- | ------------------------------------------ | --------- |
+| Tactical Operator    | End users        | Day-to-day intelligence analysis workflows | High      |
+| System Administrator | IT staff         | Deployment, configuration, maintenance     | Medium    |
+| Product Owner        | Project lead     | Requirements, priorities, acceptance       | High      |
+| Developer            | Engineering team | Implementation, architecture, testing      | Medium    |
 
 # Scope {#section-scope}
 
@@ -59,11 +59,11 @@ SILENT SENTINEL provides a browser-based tactical intelligence analysis platform
 
 ## Technical Scope
 
-| Interface | Direction | Description |
-|-----------|-----------|-------------|
-| Browser APIs | Internal | Web Components, BroadcastChannel, Service Worker |
-| Cloud Storage | Outbound | Optional file access via HTTP range requests + OIDC |
-| PWA Manifest | Internal | Installability and offline caching |
+| Interface     | Direction | Description                                         |
+| ------------- | --------- | --------------------------------------------------- |
+| Browser APIs  | Internal  | Web Components, BroadcastChannel, Service Worker    |
+| Cloud Storage | Outbound  | Optional file access via HTTP range requests + OIDC |
+| PWA Manifest  | Internal  | Installability and offline caching                  |
 
 # Product Backlog {#section-product-backlog}
 
@@ -73,16 +73,10 @@ The product backlog is managed as individual Product Backlog Items (PBIs) in `ba
 
 *As a tactical operator, I want a professional application shell so that I can navigate between intelligence modules efficiently.*
 
-| PBI ID | Title | Status | Ref |
-|--------|-------|--------|-----|
-| [PBI-005](../../tasks/pbi-005%20-%20Application-Shell-Foundation-for-Tactical-Intelligence-Dashboard.md) | Application Shell – Foundation for Tactical Intelligence Dashboard | Done | Header, Sidebar, Layout, Design, Accessibility |
+| PBI ID                                                                                                   | Title                                                              | Status | Ref                                            |
+| -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ------ | ---------------------------------------------- |
+| [PBI-005](../../tasks/pbi-005%20-%20Application-Shell-Foundation-for-Tactical-Intelligence-Dashboard.md) | Application Shell – Foundation for Tactical Intelligence Dashboard | Done   | Header, Sidebar, Layout, Design, Accessibility |
 
-## How to Add New PBIs
-
-1. Create a new PBI using `npx backlog task create` or the `crud-pbi` skill.
-2. Write the user story in the Description field: `As a [role], I want [feature] so that [benefit].`
-3. Add acceptance criteria and link to mockups or feature files.
-4. Add a row to the relevant EPIC table above, referencing the PBI file.
 
 # Supporting Models {#section-suppporting-models}
 
@@ -111,30 +105,11 @@ The product backlog is managed as individual Product Backlog Items (PBIs) in `ba
 
 ## Technical Constraints
 
-- No mandatory backend server (ADR-001)
-- Progressive Web App (ADR-002)
-- Client-side rendering only (ADR-003)
-- WebAwesome component library for UI (ADR-010)
-- Bundeswehr Design System themes (ADR-012)
-- Configuration via environment variables (ADR-014)
-- English and German language support (ADR-015)
-- Hexagonal Architecture / Ports and Adapters (ADR-019)
+See [Architecture Constraints](doc-003%20-%20Architecture-Documentation.md#section-architecture-constraints) in the Architecture Documentation.
 
 # Domain Terminology {#section-domain-terminology}
 
-| Term | Definition |
-|------|-----------|
-| SILENT SENTINEL | Name of the tactical intelligence analysis platform |
-| Application Shell | The foundational layout structure (header, sidebar, main content, status bar) |
-| PBI | Product Backlog Item – a user story, task, or bug tracked in `backlog/tasks/` |
-| OP_NEPTUNE | An operational module identifier used in top navigation |
-| IMINT | Imagery Intelligence – analysis of visual imagery data |
-| SIGINT | Signals Intelligence – analysis of electronic signals data |
-| Glassmorphism | Visual effect using backdrop blur and semi-transparent backgrounds |
-| Liquid Glass | Panel design using glassmorphism with 12px backdrop blur |
-| Marine Theme | Bundeswehr domain-specific color theme using Navy and blue tones |
-| Design Token | CSS custom property defining a visual attribute (color, font, spacing) |
-| Navigation Port | Interface (INavigationPort) for accessing navigation state |
+See [Glossary – Ubiquitous Language](doc-005%20-%20Glossary-Ubiquitous-Language.md) for all term definitions.
 
 # Assets {#section-assets}
 
@@ -152,6 +127,6 @@ Single development team.
 
 # Teams {#section-teams}
 
-| Team | Members | Feature |
-|------|---------|---------|
+| Team | Members          | Feature                                      |
+| ---- | ---------------- | -------------------------------------------- |
 | Core | Development team | Application Shell, Navigation, Design System |

@@ -16,6 +16,9 @@ This glossary defines key terms used throughout the project. Terms are listed al
 ### Accent Color
 A highlight color used sparingly to draw attention to specific UI elements such as active indicators or call-to-action components. Each theme defines its own accent scale.
 
+### Application Shell
+The foundational layout structure of SILENT SENTINEL, consisting of the header, sidebar, main content area, and status bar. The shell provides navigation and hosts all intelligence analysis modules.
+
 ## C
 
 ### Color Scale
@@ -34,12 +37,43 @@ A named value that stores a visual design attribute (color, spacing, typography,
 ### Flecktarn
 The five-color camouflage pattern used by the German Bundeswehr (Heer). It serves as the visual inspiration for the Bundeswehr Heer theme.
 
+## G
+
+### Glassmorphism
+A visual design effect using backdrop blur and semi-transparent backgrounds to create a frosted-glass appearance. Used throughout the application shell for panels and the header.
+
+## I
+
+### IMINT
+Imagery Intelligence – the analysis of visual imagery data. One of the core intelligence disciplines available in SILENT SENTINEL.
+
+## L
+
+### Liquid Glass
+A panel design pattern using glassmorphism with 12px backdrop blur. Provides the visual treatment for the three-section main content layout.
+
+## M
+
+### Marine Theme
+The Bundeswehr domain-specific color theme using Navy and Marine Blue tones. The primary visual identity of SILENT SENTINEL.
+
 ## N
+
+### Navigation Port
+The inbound port interface (`INavigationPort`) through which Presentation components interact with navigation state in the Application layer. Part of the Hexagonal Architecture design.
 
 ### Neutral Color
 A grayscale or near-grayscale color scale used for backgrounds, borders, body text, and other non-branded UI surfaces. Each theme defines its own neutral palette, ranging from warm grays to cool whites.
 
+## O
+
+### OP_NEPTUNE
+The primary operational module identifier used in the top navigation of SILENT SENTINEL. Currently the only active navigation module.
+
 ## P
+
+### PBI
+Product Backlog Item – a user story, task, or bug tracked in `backlog/tasks/`. Each PBI contains acceptance criteria, an implementation plan, and test coverage.
 
 ### Primitive Token
 The lowest-level design token that holds a raw value (for example, a hex color code). Primitive tokens change per theme and are defined in theme-specific CSS files.
@@ -57,6 +91,12 @@ A supporting color that complements the primary color. It is used for secondary 
 
 ### Semantic Token
 A design token that describes its purpose rather than its raw value (for example, `--text-primary` rather than `--color-neutral-900`). Semantic tokens reference primitive tokens and remain stable across themes.
+
+### SIGINT
+Signals Intelligence – the analysis of electronic signals data. One of the core intelligence disciplines available in SILENT SENTINEL.
+
+### SILENT SENTINEL
+The tactical intelligence analysis platform. A browser-based Progressive Web App for unified tactical intelligence analysis.
 
 ## T
 
