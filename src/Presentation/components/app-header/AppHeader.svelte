@@ -72,8 +72,9 @@
             ? styles['header__nav-link--active']
             : ''}"
           appearance="plain"
+          role="button"
           aria-current={activeModule === module ? "page" : "false"}
-          on:click={() => handleModuleClick(module)}
+          onclick={() => handleModuleClick(module)}
         >
           {label}
         </wa-button>

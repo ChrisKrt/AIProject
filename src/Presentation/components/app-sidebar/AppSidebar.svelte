@@ -73,9 +73,10 @@
             ? styles['sidebar__item--active']
             : ''}"
           appearance="plain"
+          role="button"
           aria-label="{label} module"
           aria-current={activeSidebarItem === item ? "true" : "false"}
-          on:click={() => handleItemClick(item)}
+          onclick={() => handleItemClick(item)}
         >
           <wa-icon name={icon} aria-hidden="true"></wa-icon>
           <span class={styles["sidebar__item-label"]}>{label}</span>
