@@ -77,14 +77,14 @@ As a **tactical operator** using the SILENT SENTINEL intelligence analysis platf
 ### Phase 3 – Infrastructure Adapter ✅
 - `src/Infrastructure/navigation/NavigationAdapter.ts` – BroadcastChannel sync (ADR-023), wraps `NavigationState`
 
-### Phase 4 – Shell Web Components (Presentation Layer) ✅
+### Phase 4 – Shell Svelte Components (Presentation Layer) ✅
 - `src/Presentation/components/shared.css` – `.liquid-panel`, `.data-grid`, `.sr-only`, focus ring utilities
-- `src/Presentation/components/app-header/app-header.ts` – Lit component: header, nav, search, icons (AC #1–6)
-- `src/Presentation/components/app-sidebar/app-sidebar.ts` – Lit component: 64px aside, icon+label nav (AC #7–11)
-- `src/Presentation/components/main-layout/main-layout.ts` – Lit component: 3-column layout, OBJ_DETECTION panel, grid bg (AC #12–16)
-- `src/Presentation/components/bottom-status-bar/bottom-status-bar.ts` – Lit component: status footer
-- `src/Presentation/components/app-shell/app-shell.ts` – root shell composing all above, bootstraps navigation state
-- `src/Presentation/main.ts` – entry point: calls `ThemeSwitcher.initTheme()`, imports shell
+- `src/Presentation/components/app-header/app-header.svelte` – Svelte component: header, nav, search, icons (AC #1–6)
+- `src/Presentation/components/app-sidebar/app-sidebar.svelte` – Svelte component: 64px aside, icon+label nav (AC #7–11)
+- `src/Presentation/components/main-layout/main-layout.svelte` – Svelte component: 3-column layout, OBJ_DETECTION panel, grid bg (AC #12–16)
+- `src/Presentation/components/bottom-status-bar/bottom-status-bar.svelte` – Svelte component: status footer
+- `src/Presentation/components/app-shell/app-shell.svelte` – root shell component composing all above and wiring navigation state
+- `src/Presentation/main.ts` – entry point: calls `ThemeSwitcher.initTheme()`, then imports and mounts the Svelte shell
 
 ### Phase 5 – Design Token Wiring ✅
 - All component CSS uses variables from `base.css` / theme CSS files (no magic numbers)
