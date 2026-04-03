@@ -105,7 +105,7 @@ As a **tactical operator** using the SILENT SENTINEL intelligence analysis platf
 
 ### Phase 8 – Tests ✅
 - `src/Application/navigation/NavigationState.spec.ts` – 15 unit tests, all passing
-- `backlog/assets/PBI-005.feature` – 22 Gherkin ATDD scenarios covering all ACs
+- `backlog/assets/PBI-005.feature` – 19 Gherkin ATDD scenarios covering all ACs
 
 ### Key Technical Decisions
 - **Lit v3** with native (stage-3) decorators; `accessor` keyword used for reactive state
