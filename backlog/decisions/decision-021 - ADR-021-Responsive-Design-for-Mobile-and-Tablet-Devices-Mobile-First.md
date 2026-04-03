@@ -27,7 +27,7 @@ Implement fully responsive design for the GUI, ensuring usability on mobile, tab
 ### Implementation Strategy
 
 - **CSS**: Grid/Flexbox, custom properties, media queries, CSS Modules.
-- **Components**: Lit Web Components with built-in responsiveness, WebAwesome components.
+- **Components**: Svelte Components with built-in responsiveness, WebAwesome components.
 - **Viewport**: `<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">`.
 - **Typography**: Relative units, 16px min base.
 - **Media**: Responsive images, lazy load.

@@ -4,7 +4,7 @@ title: Application Shell - Foundation for Tactical Intelligence Dashboard
 status: Refinement
 assignee: []
 created_date: '2026-04-02 16:52'
-updated_date: '2026-04-02 16:53'
+updated_date: '2026-04-02 17:01'
 labels:
   - User Story
 dependencies: []
@@ -12,6 +12,7 @@ references:
   - backlog/assets/PBI-0001-Mockup/DESIGN.md
   - backlog/assets/PBI-0001-Mockup/code.html
   - backlog/assets/PBI-0001-Mockup/screen.png
+  - backlog/assets/PBI-005.feature
 ---
 
 ## Description
@@ -52,6 +53,63 @@ As a **tactical operator** using the SILENT SENTINEL intelligence analysis platf
 - [ ] #28 #28 Disabled elements show reduced opacity (60%)
 - [ ] #29 #29 Focus states visible for keyboard navigation (accent border or outline)
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+### Phase 1 – Project Bootstrap ✅
+- `package.json` with `lit`, `vite`, `vite-plugin-pwa`, `vitest`, `typescript`
+- `vite.config.ts` – Vite build + PWA manifest (ADR-002, ADR-009)
+- `tsconfig.json` + `tsconfig.node.json`
+- `vitest.config.ts` – test runner using happy-dom environment
+- `index.html` – Vite entry, loads `src/Presentation/main.ts`, sets `data-theme="marine``
+
+### Phase 2 – Navigation Domain (Application Layer) ✅
+- `src/Application/navigation/NavigationModule.ts` – enum of top-nav modules
+- `src/Application/navigation/SidebarItem.ts` – enum of sidebar items
+- `src/Application/ports/INavigationPort.ts` – inbound port interface
+- `src/Application/navigation/NavigationState.ts` – reactive signal state (subscribe/notify)
+
+### Phase 3 – Infrastructure Adapter ✅
+- `src/Infrastructure/navigation/NavigationAdapter.ts` – BroadcastChannel sync (ADR-023), wraps `NavigationState`
+
+### Phase 4 – Shell Web Components (Presentation Layer) ✅
+- `src/Presentation/components/shared.css` – `.liquid-panel`, `.data-grid`, `.sr-only`, focus ring utilities
+- `src/Presentation/components/app-header/app-header.ts` – Lit component: header, nav, search, icons (AC #1–6)
+- `src/Presentation/components/app-sidebar/app-sidebar.ts` – Lit component: 64px aside, icon+label nav (AC #7–11)
+- `src/Presentation/components/main-layout/main-layout.ts` – Lit component: 3-column layout, OBJ_DETECTION panel, grid bg (AC #12–16)
+- `src/Presentation/components/bottom-status-bar/bottom-status-bar.ts` – Lit component: status footer
+- `src/Presentation/components/app-shell/app-shell.ts` – root shell composing all above, bootstraps navigation state
+- `src/Presentation/main.ts` – entry point: calls `ThemeSwitcher.initTheme()`, imports shell
+
+### Phase 5 – Design Token Wiring ✅
+- All component CSS uses variables from `base.css` / theme CSS files (no magic numbers)
+- `src/Presentation/DesignSystem/tokens/theme-switcher.d.ts` – TypeScript declarations
+
+### Phase 6 – Accessibility (inline with Phase 4) ✅
+- Semantic elements: `<header>`, `<nav>`, `<aside>`, `<main>`, `<footer>` (AC #24)
+- `aria-current="page"` / `aria-current="true"` on active nav items (AC #25)
+- `aria-live` regions on OBJ_DETECTION panel and status bar
+- Focus ring via CSS `focus-visible` + `--focus-ring` token (AC #29)
+- Visible 60% opacity for disabled state (AC #28)
+
+### Phase 7 – Responsive Design (inline with Phase 4) ✅
+- Mobile-first CSS breakpoints in each component
+- `< 768px`: sidebar hidden, nav links hidden (AC #11, #21)
+- `768–1023px`: right panel hidden (AC #21)
+- `≥ 1024px`: full three-column layout (AC #12)
+
+### Phase 8 – Tests ✅
+- `src/Application/navigation/NavigationState.spec.ts` – 15 unit tests, all passing
+- `backlog/assets/PBI-005.feature` – 22 Gherkin ATDD scenarios covering all ACs
+
+### Key Technical Decisions
+- **Lit v3** with native (stage-3) decorators; `accessor` keyword used for reactive state
+- **Tailwind not used** in production — CSS custom property token system from DesignSystem
+- **Background**: CSS gradient (no external image URLs; offline-safe per ADR-001)
+- **BroadcastChannel** stubbed in adapter; full multi-tab sync is ADR-023 scope
+- **No client-side router** at this phase; navigation state is signal-based only
+<!-- SECTION:PLAN:END -->
 
 ## Implementation Notes
 

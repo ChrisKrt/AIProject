@@ -1,10 +1,10 @@
 ---
 name: create-atdd
-description: Create ATDD/BDD feature file with acceptance criteria
+description: Create ATDD/BDD feature file with acceptance criteria. Apply to .feature files in backlog/assets/ and link to backlog task.
 ---
 # Skill: Create ATDD
 
-Do this onyl for user stories. For bugs extend an existing feature file with a new scenario to cover the bug fix.
+Do this only for user stories. For bugs, extend an existing feature file with a new scenario to cover the bug fix.
 ## Steps
 
 1. Review ACs: `backlog task <taskId> --plain`

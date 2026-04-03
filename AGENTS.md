@@ -27,7 +27,7 @@ backlog/assets/ - Assets related to the Product Backlog items, such as mockups, 
 | ------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ADR-001 | Fat Client Architecture   | The application runs entirely in the browser with no mandatory backend server, enabling full offline capability.                                            |
 | ADR-002 | Progressive Web App (PWA) | The GUI is implemented as a PWA to support offline use, installability, and cross-platform browser access.                                                  |
-| ADR-003 | Client-Side Rendering     | The UI uses client-side rendering with native web platform features (Web Components, Lit) instead of heavy frameworks.                                      |
+| ADR-003 | Client-Side Rendering     | The UI uses client-side rendering with native web platform features (Web Components, Svelte) instead of heavy frameworks.                                   |
 | ADR-004 | State Management          | A lightweight, signal-based reactive state management strategy is used to synchronize frontend state without a heavy store library.                         |
 | ADR-005 | Accessibility             | Accessibility (a11y) is a core requirement, mandating WCAG compliance and assistive technology support from the start.                                      |
 | ADR-006 | Access Control            | Claim- and scope-based access control is enforced client-side, with optional OpenID Connect for identity federation.                                        |
@@ -58,4 +58,20 @@ backlog/assets/ - Assets related to the Product Backlog items, such as mockups, 
 - Only the final merge commit to main must follow the commit message convention, feature branch commits can be more flexible for development purposes.
 - The changelog is generated from the commit messages using the standard format of Conventional Commits, which allows us to automatically categorize changes into features, fixes, and chores, and to generate release notes based on the commit history.
 - We use top down development, starting with the definition of the PBI and its acceptance criteria, then refining it into smaller tasks and subtasks, and finally implementing the code and tests to meet the definition of done. We start with the user interface and user experience design, then move on to the application logic and infrastructure, and finally integrate everything together and test it end to end.
-- We use a combination of Test-Driven Development (TDD) and Behavior-Driven Development (BDD) to ensure that our code is well-tested, maintainable, and meets the requirements of the users. We write unit tests for the application logic and infrastructure, and we write ATDD test cases for the user interface and user experience to ensure that they meet the acceptance criteria defined in the PBIs. We also use UI mockups to visualize the design and get feedback from stakeholders before implementing the code.
+- We use a combination of Test-Driven Development (TDD) and Behavior-Driven Development (BDD) to ensure that our code is well-tested, maintainable, and meets the requirements of the users. We write unit tests for the application logic and infrastructure, and we write ATDD test cases for the user interface and user experience to ensure that they meet the acceptance criteria defined in the PBIs. 
+- We also use UI mockups to visualize the design and get feedback from stakeholders before implementing the code.
+
+**Important**: In Planning mode please plan the implementation plan in the implementtation plan section of the PBI markdown file. At best as a checklist with tasks and subtasks. You can use the `backlog task edit <taskId>` CLI command to edit the markdown file of the PBI. Never edit the markdown files directly in the file system. Always use the CLI command to ensure that the changes are properly tracked and linked to the task. Use the skills: .github\skills\refine-pbi\SKILL.md and .github\skills\crud-pbi\SKILL.md.
+
+# Development Workflow
+1. Create PBI in Backlog.md with initial description and acceptance criteria (use `crud-pbi` skill)
+2. Refine PBI by adding implementation plan, mockups, and ATDD feature files (use `refine-pbi` skill)
+3. Create a feature branch
+4. Write ATDD test cases in Gherkin format for acceptance criteria
+5. Implement ATDD test cases and ensure they pass
+6. Implement the feature according to the implementation plan and ensure it meets the acceptance criteria
+7. Write unit tests (follow TDD approach) and ensure they pass
+8. Update the User Guide documentation if necessary (create screenshots of the finished feature to include in the docs)
+9.  Update the Architecture Documentation if necessary
+10. Update the Product Requirements Document if necessary
+11. Update the Admin Guide documentation if necessary 

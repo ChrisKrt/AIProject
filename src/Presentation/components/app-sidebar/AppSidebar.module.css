@@ -1,0 +1,112 @@
+/* ==========================================================================
+   AppSidebar – Vertical icon navigation sidebar (64px fixed width)
+   ========================================================================== */
+
+/**
+ * 64px-wide sidebar using glassmorphism consistent with header (AC #7, #10).
+ * Hidden on mobile via media query (AC #11).
+ */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 64px;
+    height: 100%;
+    padding: var(--spacing-4) 0;
+    gap: var(--spacing-4);
+    /* Glassmorphism (AC #10) */
+    background-color: rgba(2, 6, 23, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-right: 1px solid rgba(61, 95, 150, 0.2);
+    font-family: var(--font-family-mono);
+    font-size: 10px;
+    color: var(--color-secondary-500, #607383);
+    z-index: var(--z-dropdown);
+    flex-shrink: 0;
+}
+
+/** Application logo / brand mark in sidebar top. */
+.sidebar__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(61, 95, 150, 0.2);
+    border: 1px solid rgba(61, 95, 150, 0.3);
+    margin-bottom: var(--spacing-2);
+}
+
+.sidebar__logo-icon {
+    color: var(--color-accent-500, #3b82f6);
+    font-size: 20px;
+}
+
+/** Vertical nav list containing icon+label items (AC #8). */
+.sidebar__nav {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0;
+}
+
+/** Single sidebar navigation item (AC #8). */
+.sidebar__item {
+    width: 100%;
+}
+
+.sidebar__item::part(base) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-1);
+    width: 100%;
+    padding: var(--spacing-2) 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    border-left: 2px solid transparent;
+    color: var(--color-secondary-500, #607383);
+    cursor: pointer;
+    font-family: var(--font-family-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    transition:
+        color var(--transition-fast),
+        background-color var(--transition-fast);
+}
+
+.sidebar__item::part(base):hover {
+    color: var(--color-neutral-50, #f1f5f9);
+}
+
+/** Active item: accent left border + subtle background (AC #9). */
+.sidebar__item--active::part(base) {
+    color: var(--color-neutral-50, #f1f5f9);
+    border-left-color: var(--color-accent-500, #3b82f6);
+    background-color: rgba(61, 95, 150, 0.2);
+}
+
+.sidebar__item::part(base):focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: -2px;
+}
+
+/** Disabled state: reduced opacity 60% (AC #28). */
+.sidebar__item::part(base):disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.sidebar__item-label {
+    font-size: 10px;
+}
+
+/** Collapse sidebar on mobile (AC #11). */
+@media (max-width: 767px) {
+    .sidebar {
+        display: none;
+    }
+}

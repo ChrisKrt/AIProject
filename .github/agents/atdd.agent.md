@@ -1,7 +1,7 @@
 ---
 name: ATDD
-description: Create BDD/Gherkin feature files from acceptance criteria
-user-invokable: false
+description: Create BDD/Gherkin feature files from acceptance criteria (.feature files in backlog/assets/). Link to backlog task.
+user-invocable: false
 tools: ['read', 'search', 'edit', 'execute']
 ---
 

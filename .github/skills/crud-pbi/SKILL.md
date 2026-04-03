@@ -1,3 +1,8 @@
+---
+name: crud-pbi
+description: Create, read, update, and delete a product backlog item (PBI). A PBI is a user story, task, or bug. For user stories, ideally a mockup is provided. Also you should create a Acceptance Criteria feature file (.feature) (ATDD - Acceptance Test Driven Development). Link all those files as references to the PBI. See also .github\skills\refine-pbi\SKILL.md 
+The software used to handle the pbi is backlog.md, which provides a CLI.
+---
 <!-- BACKLOG.MD GUIDELINES START -->
 # Instructions for the usage of Backlog.md CLI Tool
 
