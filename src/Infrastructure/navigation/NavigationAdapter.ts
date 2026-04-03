@@ -84,6 +84,10 @@ export class NavigationAdapter {
         type: "module",
         value: this._port.getActiveModule(),
       } satisfies NavigationMessage);
+      this._channel.postMessage({
+        type: "sidebarItem",
+        value: this._port.getActiveSidebarItem(),
+      } satisfies NavigationMessage);
     } catch {
       // Ignore broadcast errors
     }
