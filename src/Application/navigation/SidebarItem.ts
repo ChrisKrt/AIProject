@@ -6,6 +6,7 @@
  */
 export enum SidebarItem {
   IMINT = "IMINT",
+  SIGINT = "SIGINT",
 }
 
 /** Default sidebar item shown on initial load. */
