@@ -24,6 +24,7 @@ interface NavigationMessage {
 export class NavigationAdapter {
   private readonly _port: INavigationPort;
   private _channel: BroadcastChannel | null = null;
+  private _unsubscribe: (() => void) | null = null;
 
   constructor(port: INavigationPort) {
     if (!port) {
@@ -31,7 +32,7 @@ export class NavigationAdapter {
     }
     this._port = port;
     this._initChannel();
-    this._port.subscribe(() => this._broadcastCurrentState());
+    this._unsubscribe = this._port.subscribe(() => this._broadcastCurrentState());
   }
 
   /** Return the underlying navigation port for use by UI components. */
@@ -41,6 +42,10 @@ export class NavigationAdapter {
 
   /** Release BroadcastChannel resources. Call when the app is torn down. */
   dispose(): void {
+    if (this._unsubscribe) {
+      this._unsubscribe();
+      this._unsubscribe = null;
+    }
     if (this._channel) {
       try {
         this._channel.close();

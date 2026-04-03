@@ -50,6 +50,9 @@ backlog/completed/
 backlog/drafts/
 backlog/milestones/
 
+# Playwright BDD generated specs
+.features-gen/
+
 # Misc
 *.swp
 *.swo

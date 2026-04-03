@@ -1,7 +1,7 @@
 ---
 id: PBI-005
 title: Application Shell - Foundation for Tactical Intelligence Dashboard
-status: Done
+status: In Review
 assignee: []
 created_date: '2026-04-02 16:52'
 updated_date: '2026-04-03 18:42'
@@ -28,10 +28,10 @@ As a **tactical operator** using the SILENT SENTINEL intelligence analysis platf
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
 - [x] #1 #1 Application title "SILENT SENTINEL" is displayed prominently in the header
-- [ ] #2 #2 Top navigation menu displays main operational modules (OP_NEPTUNE, IMINT_ANALYSIS, RECON_PHASE, etc.)
-- [ ] #3 #3 Active navigation item is visually highlighted with accent color and bottom border
-- [ ] #4 #4 Global search field is accessible in the header for quick navigation
-- [ ] #5 #5 User profile and notifications icons are accessible in the header right corner
+- [ ] #2 #2 Top navigation menu displays main operational modules (OP_NEPTUNE, IMINT_ANALYSIS, RECON_PHASE, etc.) *(deferred — only OP_NEPTUNE active; IMINT_ANALYSIS and RECON_PHASE pending implementation)*
+- [ ] #3 #3 Active navigation item is visually highlighted with accent color and bottom border *(deferred — wa-button aria-current reflection issue in Playwright; visual behaviour present)*
+- [ ] #4 #4 Global search field is accessible in the header for quick navigation *(deferred — not in scope for this shell foundation PBI)*
+- [ ] #5 #5 User profile and notifications icons are accessible in the header right corner *(deferred — not in scope for this shell foundation PBI)*
 - [x] #6 #6 Header uses glassmorphism effect with backdrop blur and semi-transparent background
 - [x] #7 #7 Vertical sidebar with 64px fixed width on left side of main content
 - [x] #8 #8 Primary navigation items (IMINT, SIGINT) display as icon + label pairs
@@ -39,7 +39,7 @@ As a **tactical operator** using the SILENT SENTINEL intelligence analysis platf
 - [x] #10 #10 Sidebar uses glassmorphism consistent with header design
 - [x] #11 #11 Mobile-responsive: sidebar collapses on small screens
 - [x] #12 #12 Three-section layout structure is implemented (left panel, center view, right panel/optional)
-- [ ] #13 #13 Left sidebar panel displays "OBJ_DETECTION" live feed indicator
+- [ ] #13 #13 Left sidebar panel displays "OBJ_DETECTION" live feed indicator *(deferred — shows placeholder text only)*
 - [x] #14 #14 Center section provides main content area for intelligence visualization
 - [x] #15 #15 All panels use "liquid glass" design (glassmorphism with 12px backdrop blur)
 - [x] #16 #16 Subtle grid background pattern is visible in main content area (24px spacing)

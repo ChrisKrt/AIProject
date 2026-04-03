@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
 import { VitePWA } from "vite-plugin-pwa";
+import { fileURLToPath } from "node:url";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -41,9 +42,9 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@app": "/src/Application",
-      "@infra": "/src/Infrastructure",
-      "@ui": "/src/Presentation",
+      "@app": fileURLToPath(new URL("./src/Application", import.meta.url)),
+      "@infra": fileURLToPath(new URL("./src/Infrastructure", import.meta.url)),
+      "@ui": fileURLToPath(new URL("./src/Presentation", import.meta.url)),
     },
   },
 });

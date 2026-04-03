@@ -3,7 +3,7 @@
  *
  * Initializes the Bundeswehr design token theme and mounts the root
  * AppShell Svelte component. The theme-switcher reads from localStorage to
- * restore the last-used theme, or defaults to "bundeswehr-heer".
+ * restore the last-used theme, or defaults to "marine".
  *
  * Global design-system CSS (tokens + themes) is imported here so that
  * CSS custom properties are available to all components (ADR-012).
