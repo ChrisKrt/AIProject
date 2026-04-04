@@ -1,0 +1,60 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs
+dist/
+build/
+.svelte-kit/
+.turbo/
+.output/
+
+# Vite
+.vite/
+vite.config.local.*
+
+# Svelte
+.svelte-kit/
+
+# TypeScript
+*.tsbuildinfo
+
+# VSCode
+.vscode/
+.history/
+
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+Icon?
+
+# Logs
+logs/
+*.log
+
+# Coverage
+coverage/
+*.lcov
+
+# Env
+.env*
+
+# Backlog generated/archived
+backlog/archive/
+backlog/completed/
+backlog/drafts/
+backlog/milestones/
+
+# Playwright BDD generated specs
+.features-gen/
+
+# Misc
+*.swp
+*.swo
+*.bak
+*.tmp

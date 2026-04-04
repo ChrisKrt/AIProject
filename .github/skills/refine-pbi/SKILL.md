@@ -1,6 +1,6 @@
 ---
 name: refine-pbi
-description: Refine a product backlog item from Idea to Refinement status
+description: Refine a product backlog item from Idea to Refinement status (PBI). A PBI is a user story, task, or bug. For user stories, ideally a mockup is provided. Also you should create a Acceptance Criteria feature file (.feature) (ATDD - Acceptance Test Driven Development). Link all those files as references to the PBI.
 ---
 # Skill: Refine Product Backlog Item
 
@@ -54,6 +54,10 @@ Create Gherkin feature file for acceptance criteria:
 - Saves to `backlog/assets/<task-prefix>-<taskId>.feature`
 - Enables test-driven development
 
+
+### 6. Update PBI References
+4. Add a row to the relevant EPIC table in the Product Requirements Document, referencing the PBI file. (backlog\docs\doc-004 - Product-Requirements-Document.md)
+
 ## Validation Checklist
 - [ ] Task viewed and understood
 - [ ] Status changed to "Refinement"
@@ -68,4 +72,51 @@ Create Gherkin feature file for acceptance criteria:
 - Mockups provide visual context for developers
 - Feature files enable automated acceptance testing
 - Keep it simple, the markdown should fit on a DIN A4 page when printed
+- You can find additional information at 'backlog\config.yml' for available preample property values and default DoD items.
 
+## PBI structure (Use the preambled markdown template for new PBIs)
+
+---
+id: PBI-00X
+title: Some Title
+status: Refinement
+assignee: []
+created_date: '2026-04-02 16:52'
+updated_date: '2026-04-02 17:01'
+labels:
+  - User Story
+dependencies: []
+references:
+  - backlog/assets/PBI-000X-Mockup/DESIGN.md
+  - backlog/assets/PBI-000X-Mockup/code.html
+  - backlog/assets/PBI-000X-Mockup/screen.png
+  - backlog/assets/PBI-00X.feature
+---
+
+## Description
+
+<!-- SECTION:DESCRIPTION:BEGIN -->
+
+<!-- SECTION:DESCRIPTION:END -->
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+
+<!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+
+<!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+
+<!-- SECTION:NOTES:END -->
+
+## Definition of Done
+<!-- DOD:BEGIN -->
+
+<!-- DOD:END -->

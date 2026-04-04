@@ -19,7 +19,7 @@ const VALID_THEMES = [
 ];
 
 const STORAGE_KEY = "bw-app-theme";
-const DEFAULT_THEME = "bundeswehr-heer";
+const DEFAULT_THEME = "marine";
 
 /**
  * Set the active theme on the document root element.

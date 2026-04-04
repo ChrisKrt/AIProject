@@ -1,0 +1,145 @@
+/* ==========================================================================
+   MainLayout – Three-section content layout
+   ========================================================================== */
+
+/** Flex container filling remaining height between header and status bar. */
+.layout {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+/** Semantic main element containing all three panels. */
+.layout__main {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ---------- Left Panel (AC #13) ---------- */
+
+/** OBJ_DETECTION live feed panel (256px, liquid glass). */
+.layout__left {
+    display: flex;
+    flex-direction: column;
+    width: 256px;
+    flex-shrink: 0;
+    margin: var(--spacing-3);
+    /* Liquid glass (AC #15) */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.layout__left-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(61, 95, 150, 0.1);
+}
+
+.layout__left-title {
+    font-family: var(--font-family-mono);
+    font-size: 10px;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-accent-500, #3b82f6);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.layout__left-content {
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* ---------- Center (AC #14) ---------- */
+
+/** Main intelligence visualization area. */
+.layout__center {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+/** Dot-grid overlay (AC #16): 24px spacing, no pointer events. */
+.layout__center-grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle,
+            rgba(51, 65, 85, 0.3) 1px,
+            transparent 1px);
+    background-size: 24px 24px;
+    z-index: 1;
+}
+
+.layout__center-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    z-index: 2;
+}
+
+/* ---------- Right Panel (AC #12) ---------- */
+
+/** Optional metadata/telemetry panel (288px, liquid glass). */
+.layout__right {
+    display: flex;
+    flex-direction: column;
+    width: 288px;
+    flex-shrink: 0;
+    margin: var(--spacing-3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.layout__right-header {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(61, 95, 150, 0.1);
+}
+
+.layout__right-title {
+    font-family: var(--font-family-mono);
+    font-size: 10px;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-accent-500, #3b82f6);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.layout__right-content {
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* ---------- Responsive breakpoints (AC #21) ---------- */
+
+/** Mobile: hide side panels, center only. */
+@media (max-width: 767px) {
+
+    .layout__left,
+    .layout__right {
+        display: none;
+    }
+}
+
+/** Tablet: hide right panel, keep left. */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .layout__right {
+        display: none;
+    }
+}

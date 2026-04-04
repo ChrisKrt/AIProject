@@ -1,4 +1,7 @@
 
+# Web API Design Guidelines
+
+When designing a web API, it is important to follow some best practices to ensure that the API is easy to use, maintain, and scale. Here are some guidelines to consider: 
 
 - do not use verbs in method names, use nouns instead (e.g. `getUser` should be `user`, `createOrder` should be `order`)
 - use the same name for the method and the endpoint (e.g. `GET /users` should be `users`, `POST /orders` should be `orders`)

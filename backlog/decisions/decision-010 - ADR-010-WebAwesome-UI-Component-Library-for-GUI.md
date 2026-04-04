@@ -6,7 +6,7 @@ status: accepted
 ---
 ## Context
 
-The current GUI is implemented as a Progressive Web App (PWA) using Lit Web Components, Vite, and TypeScript. The architecture emphasizes modularity, accessibility, and modern web standards. However, the project lacks a standardized, comprehensive UI component library to accelerate development, ensure visual consistency, and improve accessibility across the application. The team has evaluated several options and seeks to adopt a robust, well-maintained, and design-consistent UI library for all GUI components.
+The current GUI is implemented as a Progressive Web App (PWA) using Svelte, Vite, and TypeScript. The architecture emphasizes modularity, accessibility, and modern web standards. However, the project lacks a standardized, comprehensive UI component library to accelerate development, ensure visual consistency, and improve accessibility across the application. The team has evaluated several options and seeks to adopt a robust, well-maintained, and design-consistent UI library for all GUI components.
 
 
 ## Decision
@@ -15,7 +15,7 @@ The application shall use the [WebAwesome UI component library](https://webaweso
 
 WebAwesome was chosen for its:
 - Comprehensive set of accessible, modern web components
-- Strong support for web standards and interoperability with Lit
+- Strong support for web standards and interoperability with Svelte
 - Active maintenance and community support
 - Theming and customization capabilities
 - Performance and bundle size optimizations

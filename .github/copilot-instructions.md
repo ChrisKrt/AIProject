@@ -58,7 +58,6 @@
 
 # Workspace Agent instructions
 Please also see the instructions if necessary in `.github/instructions/*.md`:
-- [Backlog.md Guidelines](instructions/backlog.md.instructions.md)
 - [C# Guidelines](instructions/csharp.instructions.md)
 - [Design System Guidelines](instructions/design-system.instructions.md)
 - [Development Standards](instructions/development-standards.instructions.md)
