@@ -64,16 +64,16 @@ jobs:
                     -w /data \
                     pandoc/latex:3.9.0.2 \
                     sh -c "apt-get update && apt-get install -y texlive-full && \
-                    pandoc 'backlog/docs/doc-001 - User-Guide.md' 'LICENSE' \
+                    pandoc --from markdown \
+                    --template '.github/pandoc/templates/eisvogel.latex' \
+                    --syntax-highlighting=idiomatic \
                     -o 'dist/user-guide.pdf' \
+                    'backlog/docs/doc-001 - User-Guide.md' 'LICENSE' && \
+                    pandoc --from markdown \
                     --template '.github/pandoc/templates/eisvogel.latex' \
-                    --from markdown \
-                    --syntax-highlighting=idiomatic && \
-                    pandoc 'backlog/docs/doc-002 - Admin-Guide.md' 'LICENSE' \
+                    --syntax-highlighting=idiomatic \
                     -o 'dist/admin-guide.pdf' \
-                    --template '.github/pandoc/templates/eisvogel.latex' \
-                    --from markdown \
-                    --syntax-highlighting=idiomatic"
+                    'backlog/docs/doc-002 - Admin-Guide.md' 'LICENSE'"
 
             - name: Create GitHub release
               if: env.REVISION != ''
