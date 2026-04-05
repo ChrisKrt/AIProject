@@ -60,10 +60,11 @@ jobs:
               run: |
                   mkdir -p dist
                   docker run --rm \
+                    --entrypoint sh \
                     -v "$GITHUB_WORKSPACE:/data" \
                     -w /data \
                     pandoc/latex:3.9.0.2 \
-                    sh -c "apt-get update && apt-get install -y texlive-full && \
+                    -c "apt-get update && apt-get install -y texlive-full && \
                     pandoc --from markdown \
                     --template '.github/pandoc/templates/eisvogel.latex' \
                     --syntax-highlighting=idiomatic \
