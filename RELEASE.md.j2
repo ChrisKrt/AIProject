@@ -1,7 +1,7 @@
 {# RELEASE.md — contains only Features and Bug Fixes (no Miscellaneous / chores) #}
 {# This file is overwritten on each release and used as the GitHub release body. #}
 {% for release in tree %}
-# Release {{ release.version }} ({{ release.date.strftime("%Y-%m-%d") if release.date else "Unreleased" }})
+# Release {{ release.version }} ({{ release.date if release.date else "Unreleased" }})
 {% set has_content = namespace(value=false) %}
 {% for change_type, changes in release.changes %}{% if change_type != "Miscellaneous" %}{% set has_content.value = true %}{% endif %}{% endfor %}
 {% if not has_content.value %}

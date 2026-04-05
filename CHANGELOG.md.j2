@@ -7,7 +7,7 @@ Types: `feat` (Features), `fix` (Bug Fixes), `chore` (Miscellaneous)
 
 ---
 {% for release in tree %}
-## {{ release.version }} ({{ release.date.strftime("%Y-%m-%d") if release.date else "Unreleased" }})
+## {{ release.version }} ({{ release.date if release.date else "Unreleased" }})
 {% for change_type, changes in release.changes %}
 ### {{ change_type }}
 {% for change in changes %}
