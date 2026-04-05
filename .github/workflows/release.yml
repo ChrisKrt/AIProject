@@ -63,20 +63,17 @@ jobs:
                     -v "$GITHUB_WORKSPACE:/data" \
                     -w /data \
                     pandoc/latex:3.9.0.2 \
-                    "backlog/docs/doc-001 - User-Guide.md" \
-                    -o "dist/user-guide.pdf" \
-                    --template ".github/pandoc/templates/eisvogel.latex" \
+                    sh -c "apt-get update && apt-get install -y texlive-full && \
+                    pandoc 'backlog/docs/doc-001 - User-Guide.md' 'LICENSE' \
+                    -o 'dist/user-guide.pdf' \
+                    --template '.github/pandoc/templates/eisvogel.latex' \
                     --from markdown \
-                    --listings
-                  docker run --rm \
-                    -v "$GITHUB_WORKSPACE:/data" \
-                    -w /data \
-                    pandoc/latex:3.9.0.2 \
-                    "backlog/docs/doc-002 - Admin-Guide.md" \
-                    -o "dist/admin-guide.pdf" \
-                    --template ".github/pandoc/templates/eisvogel.latex" \
+                    --syntax-highlighting=idiomatic && \
+                    pandoc 'backlog/docs/doc-002 - Admin-Guide.md' 'LICENSE' \
+                    -o 'dist/admin-guide.pdf' \
+                    --template '.github/pandoc/templates/eisvogel.latex' \
                     --from markdown \
-                    --listings
+                    --syntax-highlighting=idiomatic"
 
             - name: Create GitHub release
               if: env.REVISION != ''
