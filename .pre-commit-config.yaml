@@ -1,0 +1,8 @@
+repos:
+  - repo: https://github.com/commitizen-tools/commitizen
+    # Pin to the latest stable release. Run `pre-commit autoupdate` to upgrade.
+    rev: v4.4.1
+    hooks:
+      - id: commitizen
+        # Validates commit messages on `git commit`
+        stages: [commit-msg]

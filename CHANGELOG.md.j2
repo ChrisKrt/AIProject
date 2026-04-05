@@ -1,0 +1,18 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+Commit format: `<type>[(#<ticket>)]: <description>`
+Types: `feat` (Features), `fix` (Bug Fixes), `chore` (Miscellaneous)
+
+---
+{% for release in tree %}
+## {{ release.version }} ({{ release.date.strftime("%Y-%m-%d") if release.date else "Unreleased" }})
+{% for change_type, changes in release.changes %}
+### {{ change_type }}
+{% for change in changes %}
+- {% if change.scope %}**(#{{ change.scope }})** {% endif %}{{ change.message }}
+{% endfor %}
+{% endfor %}
+---
+{% endfor %}

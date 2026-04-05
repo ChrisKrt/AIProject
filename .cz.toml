@@ -1,0 +1,56 @@
+[tool.commitizen]
+name = "cz_customize"
+version = "0.1.0"
+version_provider = "commitizen"
+tag_format = "v$version"
+major_version_zero = true
+update_changelog_on_bump = true
+changelog_incremental = true
+changelog_file = "CHANGELOG.md"
+template = "CHANGELOG.md.j2"
+bump_message = "bump: version $current_version → $new_version"
+version_files = ["package.json:\"version\": \"$version\""]
+
+[tool.commitizen.customize]
+# Message template: feat(#42): description  OR  chore: description
+message_template = "{{change_type}}{% if scope %}(#{{scope}}){% endif %}: {{message}}"
+schema = "<type>[(#<ticket>)]: <description>"
+
+# Validation pattern (used by cz check and pre-commit hook)
+# Allows: feat(#PBI-42): ..., fix(#123): ..., chore(#abc-1): ..., chore: ...
+schema_pattern = "(feat|fix|chore)(\\(#[\\w\\-]+\\))?:\\s.+"
+
+# Bump rules — feat → MINOR, fix → PATCH, chore → no bump
+bump_pattern = "^(feat|fix)"
+bump_map = { feat = "MINOR", fix = "PATCH" }
+
+# Changelog extraction
+commit_parser = "^(?P<change_type>feat|fix|chore)(\\(#(?P<scope>[\\w\\-]+)\\))?:\\s(?P<message>.+)"
+changelog_pattern = "^(feat|fix|chore)"
+
+# Map commit types to changelog section headings
+change_type_map = { feat = "Features", fix = "Bug Fixes", chore = "Miscellaneous" }
+
+# Section order in CHANGELOG.md
+change_type_order = ["Features", "Bug Fixes", "Miscellaneous"]
+
+# Interactive commit questions
+[[tool.commitizen.customize.questions]]
+type = "list"
+name = "change_type"
+message = "Select the type of change you are committing:"
+choices = [
+    { value = "feat", name = "feat:  A new feature" },
+    { value = "fix", name = "fix:   A bug fix" },
+    { value = "chore", name = "chore: Maintenance task (refactor, docs, cleanup, …)" },
+]
+
+[[tool.commitizen.customize.questions]]
+type = "input"
+name = "scope"
+message = "Ticket / PBI number (without #, e.g. 42 or PBI-005 — leave blank to skip):"
+
+[[tool.commitizen.customize.questions]]
+type = "input"
+name = "message"
+message = "Commit description:"
