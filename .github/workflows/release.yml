@@ -42,7 +42,7 @@ jobs:
             - name: Generate RELEASE.md
               if: env.REVISION != ''
               run: |
-                  cz changelog --dry-run "${{ env.REVISION }}" --template RELEASE.md.j2 > RELEASE.md
+                  cz changelog --dry-run --template RELEASE.md.j2 --incremental > RELEASE.md
 
             - name: Commit and push RELEASE.md
               if: env.REVISION != ''
