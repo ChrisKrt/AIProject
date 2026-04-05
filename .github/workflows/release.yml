@@ -64,7 +64,8 @@ jobs:
                     -v "$GITHUB_WORKSPACE:/data" \
                     -w /data \
                     pandoc/latex:3.9.0.2 \
-                    -c "apt-get update && apt-get install -y texlive-full && \
+                    -c "tlmgr update --self && \
+                    tlmgr install adjustbox babel-german background bidi collectbox csquotes everypage filehook footmisc footnotebackref framed fvextra letltxmacro ly1 mdframed mweights needspace pagecolor sourcecodepro sourcesanspro titling ucharcat ulem unicode-math upquote xecjk xurl zref && \
                     pandoc --from markdown \
                     --template '.github/pandoc/templates/eisvogel.latex' \
                     --syntax-highlighting=idiomatic \
