@@ -1,9 +1,16 @@
 ---
 id: doc-001
-title: User Guide
+title: "User Guide – SILENT SENTINEL"
+author: ["SILENT SENTINEL"]
+date: "2026-04-03"
 type: other
 created_date: '2026-02-07 18:14'
 updated_date: '2026-04-03 18:34'
+titlepage: true
+toc: true
+toc-own-page: true
+colorlinks: true
+lang: en
 ---
 # User Guide – SILENT SENTINEL
 

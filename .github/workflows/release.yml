@@ -55,6 +55,29 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
+            - name: Generate documentation PDFs
+              if: env.REVISION != ''
+              run: |
+                  mkdir -p dist
+                  docker run --rm \
+                    -v "$GITHUB_WORKSPACE:/data" \
+                    -w /data \
+                    pandoc/latex:3.9.0.2 \
+                    "backlog/docs/doc-001 - User-Guide.md" \
+                    -o "dist/user-guide.pdf" \
+                    --template ".github/pandoc/templates/eisvogel.latex" \
+                    --from markdown \
+                    --listings
+                  docker run --rm \
+                    -v "$GITHUB_WORKSPACE:/data" \
+                    -w /data \
+                    pandoc/latex:3.9.0.2 \
+                    "backlog/docs/doc-002 - Admin-Guide.md" \
+                    -o "dist/admin-guide.pdf" \
+                    --template ".github/pandoc/templates/eisvogel.latex" \
+                    --from markdown \
+                    --listings
+
             - name: Create GitHub release
               if: env.REVISION != ''
               uses: ncipollo/release-action@v1
@@ -62,6 +85,7 @@ jobs:
                   tag: v${{ env.REVISION }}
                   name: "v${{ env.REVISION }}"
                   bodyFile: "RELEASE.md"
+                  artifacts: "dist/user-guide.pdf,dist/admin-guide.pdf"
                   skipIfReleaseExists: true
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
