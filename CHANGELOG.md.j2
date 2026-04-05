@@ -8,7 +8,7 @@ Types: `feat` (Features), `fix` (Bug Fixes), `chore` (Miscellaneous)
 ---
 {% for release in tree %}
 ## {{ release.version }} ({{ release.date if release.date else "Unreleased" }})
-{% for change_type, changes in release.changes %}
+{% for change_type, changes in release.changes.items() %}
 ### {{ change_type }}
 {% for change in changes %}
 - {% if change.scope %}**(#{{ change.scope }})** {% endif %}{{ change.message }}
