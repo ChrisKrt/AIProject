@@ -33,9 +33,11 @@
     class?: string;
     /** Map port for the geographic intelligence layer (PBI-006). */
     mapPort?: IMapPort;
+    /** Tile style URL for the map (PBI-006). Resolved from env at the composition root. */
+    mapTileUrl?: string;
   }
 
-  const { left, children, right, class: className, mapPort }: Props = $props();
+  const { left, children, right, class: className, mapPort, mapTileUrl }: Props = $props();
 </script>
 
 <div class={`${styles.layout} ${className || ""}`.trim()}>
@@ -63,7 +65,7 @@
       <div class={styles["layout__center-grid"]} aria-hidden="true"></div>
       <div class={styles["layout__center-content"]}>
         {#if mapPort}
-          <MapView {mapPort} />
+          <MapView {mapPort} styleUrl={mapTileUrl} />
         {:else if children}
           {@render children()}
         {/if}

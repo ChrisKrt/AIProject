@@ -38,6 +38,8 @@ function createMockMapPort(): IMapPort {
     subscribe: vi.fn(() => vi.fn()),
     mountMap: vi.fn(),
     disposeMap: vi.fn(),
+    getMousePosition: vi.fn(() => null),
+    subscribeMouseMove: vi.fn(() => vi.fn()),
   };
 }
 

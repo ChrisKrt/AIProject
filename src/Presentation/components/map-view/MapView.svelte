@@ -17,7 +17,7 @@
   interface Props {
     /** The map port / adapter that handles mounting and state. */
     mapPort: IMapPort;
-    /** Optional tile style URL. Defaults to dark/light theme from env or media query. */
+    /** Optional tile style URL. Defaults to dark/light theme from media query. */
     styleUrl?: string;
   }
 
@@ -25,22 +25,18 @@
 
   let containerEl: HTMLElement | undefined = $state();
 
-  /** Resolve the tile style URL: prop > env var > media query. */
+  /** Resolve the tile style URL: prop > media query fallback. */
   function resolveStyleUrl(): string {
     if (styleUrl) return styleUrl;
 
-    const darkUrl =
-      import.meta.env['VITE_MAP_TILE_URL_DARK'] ??
-      'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json';
-    const lightUrl =
-      import.meta.env['VITE_MAP_TILE_URL_LIGHT'] ??
-      'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
+    const DARK_URL = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json';
+    const LIGHT_URL = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
 
     try {
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      return prefersDark ? darkUrl : lightUrl;
+      return prefersDark ? DARK_URL : LIGHT_URL;
     } catch {
-      return darkUrl;
+      return DARK_URL;
     }
   }
 

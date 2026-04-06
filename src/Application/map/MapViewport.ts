@@ -16,15 +16,12 @@ export interface MapViewport {
 }
 
 /**
- * Default viewport read from environment variables, with safe fallbacks to
- * central Europe (lng 9, lat 51, zoom 5).
+ * Default viewport centred on Central Europe (lng 9, lat 51, zoom 5).
+ * Used as a fallback when no initial viewport is provided to MapState.
  */
 export const DEFAULT_MAP_VIEWPORT: MapViewport = {
-  center: [
-    Number(import.meta.env['VITE_MAP_DEFAULT_LNG'] ?? 9),
-    Number(import.meta.env['VITE_MAP_DEFAULT_LAT'] ?? 51),
-  ],
-  zoom: Number(import.meta.env['VITE_MAP_DEFAULT_ZOOM'] ?? 5),
+  center: [9, 51],
+  zoom: 5,
   bearing: 0,
   pitch: 0,
 };
