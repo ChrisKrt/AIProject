@@ -28,6 +28,21 @@ export interface IMapPort {
   subscribe(callback: () => void): () => void;
 
   /**
+   * Return the current mouse cursor position as [lng, lat], or null when the
+   * cursor is outside the map canvas. Updated by the infrastructure adapter
+   * via `mousemove` / `mouseout` events; always null in the application core.
+   */
+  getMousePosition(): readonly [number, number] | null;
+
+  /**
+   * Subscribe to mouse-move events on the map canvas.
+   * The callback is invoked whenever the cursor moves over the map or leaves it.
+   * Returns an unsubscribe function.
+   * No-op (returns empty unsubscribe) in the application core.
+   */
+  subscribeMouseMove(callback: () => void): () => void;
+
+  /**
    * Mount the underlying map renderer into the given container element.
    * No-op in the application core; implemented by the infrastructure adapter.
    */

@@ -58,6 +58,16 @@ export class MapState implements IMapPort {
     };
   }
 
+  /** Always returns null; mouse position is tracked only by the infrastructure adapter. */
+  getMousePosition(): readonly [number, number] | null {
+    return null;
+  }
+
+  /** No-op; mouse-move subscription is handled by the infrastructure adapter. */
+  subscribeMouseMove(_callback: () => void): () => void {
+    return () => {};
+  }
+
   /** No-op in the core layer; exists to satisfy the IMapPort contract.
    * The infrastructure adapter (MapLibreAdapter) overrides this to mount
    * the real MapLibre GL map renderer into the provided DOM container.

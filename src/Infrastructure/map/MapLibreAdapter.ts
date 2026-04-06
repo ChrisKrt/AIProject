@@ -29,6 +29,8 @@ export class MapLibreAdapter implements IMapPort {
   private _map: maplibregl.Map | null = null;
   private _channel: BroadcastChannel | null = null;
   private _unsubscribe: (() => void) | null = null;
+  private _mousePosition: readonly [number, number] | null = null;
+  private readonly _mouseSubscribers = new Set<() => void>();
 
   constructor(port: IMapPort) {
     if (!port) throw new Error('MapLibreAdapter constructor requires a non-null IMapPort instance.');
@@ -110,6 +112,18 @@ export class MapLibreAdapter implements IMapPort {
           // Ignore move errors
         }
       });
+      this._map.on('mousemove', (e) => {
+        try {
+          this._mousePosition = [e.lngLat.lng, e.lngLat.lat];
+          for (const cb of this._mouseSubscribers) cb();
+        } catch {
+          // Ignore mouse-move errors
+        }
+      });
+      this._map.on('mouseout', () => {
+        this._mousePosition = null;
+        for (const cb of this._mouseSubscribers) cb();
+      });
     } catch {
       // maplibre-gl may be unavailable; degrade gracefully
     }
@@ -140,6 +154,24 @@ export class MapLibreAdapter implements IMapPort {
       }
       this._channel = null;
     }
+    this._mousePosition = null;
+    this._mouseSubscribers.clear();
+  }
+
+  /** Return the current mouse cursor geographic position, or null when off the map. */
+  getMousePosition(): readonly [number, number] | null {
+    return this._mousePosition;
+  }
+
+  /**
+   * Subscribe to mouse-position changes.
+   * Returns an unsubscribe function.
+   */
+  subscribeMouseMove(callback: () => void): () => void {
+    this._mouseSubscribers.add(callback);
+    return () => {
+      this._mouseSubscribers.delete(callback);
+    };
   }
 
   private _initChannel(): void {

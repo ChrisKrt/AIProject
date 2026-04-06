@@ -229,4 +229,138 @@ describe('MapLibreAdapter', () => {
       expect(mockChannel.close).toHaveBeenCalledTimes(1);
     });
   });
+
+  describe('mouse position', () => {
+    it('getMousePosition returns null before any mousemove', () => {
+      // Arrange
+      const port = createPort();
+      const adapter = new MapLibreAdapter(port);
+
+      // Act / Assert
+      expect(adapter.getMousePosition()).toBeNull();
+    });
+
+    it('getMousePosition returns coordinates after mousemove event', async () => {
+      // Arrange
+      const { default: maplibregl } = await import('maplibre-gl');
+      const port = createPort();
+      const adapter = new MapLibreAdapter(port);
+      const container = document.createElement('div');
+      adapter.mountMap(container, 'https://example.com/style.json');
+      const mapInstance = (maplibregl.Map as ReturnType<typeof vi.fn>).mock.results[0].value;
+
+      // Find the mousemove handler registered via map.on('mousemove', handler)
+      const mousemoveCall = (mapInstance.on as ReturnType<typeof vi.fn>).mock.calls.find(
+        (call: unknown[]) => call[0] === 'mousemove',
+      );
+      const mousemoveHandler = mousemoveCall?.[1] as ((e: { lngLat: { lng: number; lat: number } }) => void) | undefined;
+
+      // Act
+      mousemoveHandler?.({ lngLat: { lng: 13.4, lat: 52.5 } });
+
+      // Assert
+      expect(adapter.getMousePosition()).toEqual([13.4, 52.5]);
+    });
+
+    it('getMousePosition returns null after mouseout event', async () => {
+      // Arrange
+      const { default: maplibregl } = await import('maplibre-gl');
+      const port = createPort();
+      const adapter = new MapLibreAdapter(port);
+      const container = document.createElement('div');
+      adapter.mountMap(container, 'https://example.com/style.json');
+      const mapInstance = (maplibregl.Map as ReturnType<typeof vi.fn>).mock.results[0].value;
+
+      const mousemoveCall = (mapInstance.on as ReturnType<typeof vi.fn>).mock.calls.find(
+        (call: unknown[]) => call[0] === 'mousemove',
+      );
+      const mousemoveHandler = mousemoveCall?.[1] as ((e: { lngLat: { lng: number; lat: number } }) => void) | undefined;
+      mousemoveHandler?.({ lngLat: { lng: 13.4, lat: 52.5 } });
+
+      const mouseoutCall = (mapInstance.on as ReturnType<typeof vi.fn>).mock.calls.find(
+        (call: unknown[]) => call[0] === 'mouseout',
+      );
+      const mouseoutHandler = mouseoutCall?.[1] as (() => void) | undefined;
+
+      // Act
+      mouseoutHandler?.();
+
+      // Assert
+      expect(adapter.getMousePosition()).toBeNull();
+    });
+
+    it('subscribeMouseMove callback is invoked on mousemove', async () => {
+      // Arrange
+      const { default: maplibregl } = await import('maplibre-gl');
+      const port = createPort();
+      const adapter = new MapLibreAdapter(port);
+      const container = document.createElement('div');
+      adapter.mountMap(container, 'https://example.com/style.json');
+      const mapInstance = (maplibregl.Map as ReturnType<typeof vi.fn>).mock.results[0].value;
+
+      const callback = vi.fn();
+      adapter.subscribeMouseMove(callback);
+
+      const mousemoveCall = (mapInstance.on as ReturnType<typeof vi.fn>).mock.calls.find(
+        (call: unknown[]) => call[0] === 'mousemove',
+      );
+      const mousemoveHandler = mousemoveCall?.[1] as ((e: { lngLat: { lng: number; lat: number } }) => void) | undefined;
+
+      // Act
+      mousemoveHandler?.({ lngLat: { lng: 13.4, lat: 52.5 } });
+
+      // Assert
+      expect(callback).toHaveBeenCalledTimes(1);
+    });
+
+    it('subscribeMouseMove unsubscribe stops notifications', async () => {
+      // Arrange
+      const { default: maplibregl } = await import('maplibre-gl');
+      const port = createPort();
+      const adapter = new MapLibreAdapter(port);
+      const container = document.createElement('div');
+      adapter.mountMap(container, 'https://example.com/style.json');
+      const mapInstance = (maplibregl.Map as ReturnType<typeof vi.fn>).mock.results[0].value;
+
+      const callback = vi.fn();
+      const unsubscribe = adapter.subscribeMouseMove(callback);
+      unsubscribe();
+
+      const mousemoveCall = (mapInstance.on as ReturnType<typeof vi.fn>).mock.calls.find(
+        (call: unknown[]) => call[0] === 'mousemove',
+      );
+      const mousemoveHandler = mousemoveCall?.[1] as ((e: { lngLat: { lng: number; lat: number } }) => void) | undefined;
+
+      // Act
+      mousemoveHandler?.({ lngLat: { lng: 13.4, lat: 52.5 } });
+
+      // Assert
+      expect(callback).not.toHaveBeenCalled();
+    });
+
+    it('disposeMap clears mouse position and subscribers', async () => {
+      // Arrange
+      const { default: maplibregl } = await import('maplibre-gl');
+      const port = createPort();
+      const adapter = new MapLibreAdapter(port);
+      const container = document.createElement('div');
+      adapter.mountMap(container, 'https://example.com/style.json');
+      const mapInstance = (maplibregl.Map as ReturnType<typeof vi.fn>).mock.results[0].value;
+
+      const callback = vi.fn();
+      adapter.subscribeMouseMove(callback);
+
+      const mousemoveCall = (mapInstance.on as ReturnType<typeof vi.fn>).mock.calls.find(
+        (call: unknown[]) => call[0] === 'mousemove',
+      );
+      const mousemoveHandler = mousemoveCall?.[1] as ((e: { lngLat: { lng: number; lat: number } }) => void) | undefined;
+      mousemoveHandler?.({ lngLat: { lng: 13.4, lat: 52.5 } });
+
+      // Act
+      adapter.disposeMap();
+
+      // Assert
+      expect(adapter.getMousePosition()).toBeNull();
+    });
+  });
 });

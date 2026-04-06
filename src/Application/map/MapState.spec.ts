@@ -142,4 +142,32 @@ describe('MapState', () => {
       expect(() => state.disposeMap()).not.toThrow();
     });
   });
+
+  describe('mouse position (no-ops)', () => {
+    it('getMousePosition returns null', () => {
+      // Arrange
+      const state = new MapState();
+
+      // Act
+      const pos = state.getMousePosition();
+
+      // Assert
+      expect(pos).toBeNull();
+    });
+
+    it('subscribeMouseMove returns an unsubscribe function without throwing', () => {
+      // Arrange
+      const state = new MapState();
+      const callback = vi.fn();
+
+      // Act
+      const unsubscribe = state.subscribeMouseMove(callback);
+      state.setViewport(ALT_VIEWPORT); // changing viewport must NOT call the callback
+
+      // Assert
+      expect(callback).not.toHaveBeenCalled();
+      expect(typeof unsubscribe).toBe('function');
+      expect(() => unsubscribe()).not.toThrow();
+    });
+  });
 });

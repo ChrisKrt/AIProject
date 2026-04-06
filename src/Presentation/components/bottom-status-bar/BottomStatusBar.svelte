@@ -4,6 +4,8 @@
    *
    * Renders a fixed bottom footer displaying:
    * - Current geo-coordinates from the map viewport (PBI-006, AC #10)
+   *   When the cursor is over the map the coordinates show the cursor position;
+   *   when the cursor is outside the map they show the viewport center.
    * - Encryption status
    * - System terminal shortcut
    * - System metrics: uplink status, latency, signal bars
@@ -40,26 +42,45 @@
     return `${Math.abs(value).toFixed(4)}° ${value >= 0 ? 'N' : 'S'}`;
   }
 
-  let unsubscribe: (() => void) | null = null;
+  let unsubscribeViewport: (() => void) | null = null;
+  let unsubscribeMouseMove: (() => void) | null = null;
+
+  /** Sync displayed coordinates from mouse position (preferred) or viewport center. */
+  function syncCoords(): void {
+    if (!mapPort) return;
+    const mouse = mapPort.getMousePosition();
+    if (mouse) {
+      lng = mouse[0];
+      lat = mouse[1];
+    } else {
+      const vp = mapPort.getViewport();
+      lng = vp.center[0];
+      lat = vp.center[1];
+    }
+  }
 
   onMount(() => {
     if (!mapPort) return;
 
-    const vp = mapPort.getViewport();
-    lng = vp.center[0];
-    lat = vp.center[1];
+    syncCoords();
 
-    unsubscribe = mapPort.subscribe(() => {
-      const updated = mapPort.getViewport();
-      lng = updated.center[0];
-      lat = updated.center[1];
+    unsubscribeViewport = mapPort.subscribe(() => {
+      syncCoords();
+    });
+
+    unsubscribeMouseMove = mapPort.subscribeMouseMove(() => {
+      syncCoords();
     });
   });
 
   onDestroy(() => {
-    if (unsubscribe) {
-      unsubscribe();
-      unsubscribe = null;
+    if (unsubscribeViewport) {
+      unsubscribeViewport();
+      unsubscribeViewport = null;
+    }
+    if (unsubscribeMouseMove) {
+      unsubscribeMouseMove();
+      unsubscribeMouseMove = null;
     }
   });
 </script>
