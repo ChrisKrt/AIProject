@@ -24,6 +24,8 @@
   const { mapPort, styleUrl }: Props = $props();
 
   let containerEl: HTMLElement | undefined = $state();
+  /** The resolved tile style URL exposed as a data attribute for testability. */
+  let mountedStyleUrl: string = $state('');
 
   /** Resolve the tile style URL: prop > media query fallback. */
   function resolveStyleUrl(): string {
@@ -42,7 +44,8 @@
 
   onMount(() => {
     if (containerEl) {
-      mapPort.mountMap(containerEl, resolveStyleUrl());
+      mountedStyleUrl = resolveStyleUrl();
+      mapPort.mountMap(containerEl, mountedStyleUrl);
     }
   });
 
@@ -51,6 +54,6 @@
   });
 </script>
 
-<div class={styles.map} aria-label="Tactical Map" role="application">
+<div class={styles.map} aria-label="Tactical Map" role="application" data-style-url={mountedStyleUrl}>
   <div class={styles.map__container} bind:this={containerEl}></div>
 </div>

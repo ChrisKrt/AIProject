@@ -89,3 +89,87 @@ When("I navigate through header elements using keyboard", async ({ page }) => {
 When("I inspect the disabled element's visual style", async ({ page }) => {
   await page.waitForSelector("[disabled], [aria-disabled='true']");
 });
+
+// ─── PBI-006: Map When steps ──────────────────────────────────────────────
+
+/** Wait for the full page to finish loading. */
+When("the application has loaded", async ({ page }) => {
+  await page.waitForSelector("main", { timeout: 10_000 });
+});
+
+/** Wait until the MapLibre canvas is attached to the map container. */
+When("the map has initialised", async ({ page }) => {
+  await page.waitForSelector('[aria-label="Tactical Map"]', { timeout: 10_000 });
+});
+
+/** Alias for 'the map has initialised' used in coordinate scenarios. */
+When("the map has loaded", async ({ page }) => {
+  await page.waitForSelector('[aria-label="Tactical Map"]', { timeout: 10_000 });
+});
+
+/** Simulate a mouse drag across the map canvas to pan the map. */
+When("the user drags the map canvas", async ({ page }) => {
+  const canvas = page.locator('[aria-label="Tactical Map"] canvas').first();
+  await canvas.waitFor({ state: "attached", timeout: 10_000 });
+  const box = await canvas.boundingBox();
+  console.assert(box !== null, "Map canvas must have a bounding box");
+  if (box) {
+    const cx = box.x + box.width / 2;
+    const cy = box.y + box.height / 2;
+    await page.mouse.move(cx, cy);
+    await page.mouse.down();
+    await page.mouse.move(cx + 100, cy + 50, { steps: 10 });
+    await page.mouse.up();
+    await page.waitForTimeout(500);
+  }
+});
+
+/** Scroll the mouse wheel upward on the map canvas to zoom in. */
+When("the user scrolls up on the map canvas", async ({ page }) => {
+  const canvas = page.locator('[aria-label="Tactical Map"] canvas').first();
+  await canvas.waitFor({ state: "attached", timeout: 10_000 });
+  const box = await canvas.boundingBox();
+  console.assert(box !== null, "Map canvas must have a bounding box");
+  if (box) {
+    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+    await page.mouse.wheel(0, -300);
+    await page.waitForTimeout(500);
+  }
+});
+
+/** Press the right arrow key to pan the map eastward. */
+When("the user presses the right arrow key", async ({ page }) => {
+  await page.keyboard.press("ArrowRight");
+  await page.waitForTimeout(300);
+});
+
+/** Tab into the first MapLibre navigation control button and give it keyboard focus. */
+When("a map control button receives keyboard focus", async ({ page }) => {
+  const button = page.locator(".maplibregl-ctrl button").first();
+  await button.waitFor({ state: "attached", timeout: 10_000 });
+  await button.focus();
+});
+
+/** Clear localStorage and navigate fresh so no previously saved viewport is applied. */
+When("the application has loaded with no saved viewport", async ({ page }) => {
+  await page.evaluate(() => localStorage.clear());
+  await page.goto("/");
+  await page.waitForSelector('[aria-label="Tactical Map"]', { timeout: 10_000 });
+});
+
+/** Drag the map canvas significantly to pan it to a new location. */
+When("the user pans the map to a new location", async ({ page }) => {
+  const canvas = page.locator('[aria-label="Tactical Map"] canvas').first();
+  await canvas.waitFor({ state: "attached", timeout: 10_000 });
+  const box = await canvas.boundingBox();
+  console.assert(box !== null, "Map canvas must have a bounding box");
+  if (box) {
+    const cx = box.x + box.width / 2;
+    const cy = box.y + box.height / 2;
+    await page.mouse.move(cx, cy);
+    await page.mouse.down();
+    await page.mouse.move(cx + 250, cy, { steps: 20 });
+    await page.mouse.up();
+    await page.waitForTimeout(800);
+  }
+});
