@@ -55,36 +55,36 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
-            - name: Generate documentation PDFs
-              if: env.REVISION != ''
-              run: |
-                  mkdir -p dist
-                  docker run --rm \
-                    --entrypoint sh \
-                    -v "$GITHUB_WORKSPACE:/data" \
-                    -w /data \
-                    pandoc/latex:3.9.0.2 \
-                    -c "tlmgr update --self && \
-                    tlmgr install adjustbox babel-german background bidi collectbox csquotes everypage filehook footmisc footnotebackref framed fvextra letltxmacro ly1 mdframed mweights needspace pagecolor sourcecodepro sourcesanspro titling ucharcat ulem unicode-math upquote xecjk xurl zref && \
-                    pandoc --from markdown \
-                    --template '.github/pandoc/templates/eisvogel.latex' \
-                    --syntax-highlighting=idiomatic \
-                    -o 'dist/user-guide.pdf' \
-                    'backlog/docs/doc-001 - User-Guide.md' 'LICENSE' && \
-                    pandoc --from markdown \
-                    --template '.github/pandoc/templates/eisvogel.latex' \
-                    --syntax-highlighting=idiomatic \
-                    -o 'dist/admin-guide.pdf' \
-                    'backlog/docs/doc-002 - Admin-Guide.md' 'LICENSE'"
+            # - name: Generate documentation PDFs
+            #   if: env.REVISION != ''
+            #   run: |
+            #       mkdir -p dist
+            #       docker run --rm \
+            #         --entrypoint sh \
+            #         -v "$GITHUB_WORKSPACE:/data" \
+            #         -w /data \
+            #         pandoc/latex:3.9.0.2 \
+            #         -c "tlmgr update --self && \
+            #         tlmgr install adjustbox babel-german background bidi collectbox csquotes everypage filehook footmisc footnotebackref framed fvextra letltxmacro ly1 mdframed mweights needspace pagecolor sourcecodepro sourcesanspro titling ucharcat ulem unicode-math upquote xecjk xurl zref && \
+            #         pandoc --from markdown \
+            #         --template '.github/pandoc/templates/eisvogel.latex' \
+            #         --syntax-highlighting=idiomatic \
+            #         -o 'dist/user-guide.pdf' \
+            #         'backlog/docs/doc-001 - User-Guide.md' 'LICENSE' && \
+            #         pandoc --from markdown \
+            #         --template '.github/pandoc/templates/eisvogel.latex' \
+            #         --syntax-highlighting=idiomatic \
+            #         -o 'dist/admin-guide.pdf' \
+            #         'backlog/docs/doc-002 - Admin-Guide.md' 'LICENSE'"
 
-            - name: Create GitHub release
-              if: env.REVISION != ''
-              uses: ncipollo/release-action@v1
-              with:
-                  tag: v${{ env.REVISION }}
-                  name: "v${{ env.REVISION }}"
-                  bodyFile: "RELEASE.md"
-                  artifacts: "dist/user-guide.pdf,dist/admin-guide.pdf"
-                  skipIfReleaseExists: true
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            # - name: Create GitHub release
+            #   if: env.REVISION != ''
+            #   uses: ncipollo/release-action@v1
+            #   with:
+            #       tag: v${{ env.REVISION }}
+            #       name: "v${{ env.REVISION }}"
+            #       bodyFile: "RELEASE.md"
+            #       artifacts: "dist/user-guide.pdf,dist/admin-guide.pdf"
+            #       skipIfReleaseExists: true
+            #   env:
+            #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
