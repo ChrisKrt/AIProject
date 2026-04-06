@@ -30,6 +30,16 @@
   let lng = $state(0);
   let lat = $state(0);
 
+  /** Format a longitude value with correct hemisphere suffix. */
+  function formatLng(value: number): string {
+    return `${Math.abs(value).toFixed(4)}° ${value >= 0 ? 'E' : 'W'}`;
+  }
+
+  /** Format a latitude value with correct hemisphere suffix. */
+  function formatLat(value: number): string {
+    return `${Math.abs(value).toFixed(4)}° ${value >= 0 ? 'N' : 'S'}`;
+  }
+
   let unsubscribe: (() => void) | null = null;
 
   onMount(() => {
@@ -60,7 +70,7 @@
 >
   {#if mapPort}
     <span aria-label="Coordinates" aria-live="polite" class={styles.footer__coords}>
-      {lng.toFixed(4)}° E, {lat.toFixed(4)}° N
+      {formatLng(lng)}, {formatLat(lat)}
     </span>
   {/if}
 </footer>

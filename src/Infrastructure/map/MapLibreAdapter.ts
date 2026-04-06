@@ -151,12 +151,11 @@ export class MapLibreAdapter implements IMapPort {
     }
   }
 
-  private _onMessage(event: MessageEvent<MapMessage>): void {
-    const { type, value } = event.data;
+  private _onMessage(event: MessageEvent): void {
     try {
-      if (type === 'viewport') {
-        this._port.setViewport(value);
-      }
+      const data = event.data as MapMessage;
+      if (!data || data.type !== 'viewport' || !data.value) return;
+      this._port.setViewport(data.value);
     } catch {
       // Ignore malformed messages
     }

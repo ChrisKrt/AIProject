@@ -17,6 +17,7 @@ export class MapState implements IMapPort {
 
   /** Construct with an optional initial viewport (defaults to DEFAULT_MAP_VIEWPORT). */
   constructor(initialViewport: MapViewport = DEFAULT_MAP_VIEWPORT) {
+    if (!initialViewport) throw new Error('MapState: initialViewport must not be null or undefined.');
     this._viewport = initialViewport;
   }
 
@@ -30,6 +31,7 @@ export class MapState implements IMapPort {
    * Does not notify if the new viewport is identical to the current one.
    */
   setViewport(viewport: MapViewport): void {
+    if (!viewport) throw new Error('setViewport: viewport must not be null or undefined.');
     if (MapState._isEqual(this._viewport, viewport)) return;
     this._viewport = viewport;
     this._notifySubscribers();
@@ -41,6 +43,7 @@ export class MapState implements IMapPort {
    * the infrastructure adapter.
    */
   flyTo(viewport: MapViewport): void {
+    if (!viewport) throw new Error('flyTo: viewport must not be null or undefined.');
     this.setViewport(viewport);
   }
 

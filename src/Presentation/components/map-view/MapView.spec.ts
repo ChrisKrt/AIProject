@@ -67,14 +67,6 @@ describe('MapView', () => {
   });
 
   describe('lifecycle', () => {
-    it('calls subscribe on the mapPort', () => {
-      const mapPort = createMockMapPort();
-
-      render(MapView, { props: { mapPort } });
-
-      expect(mapPort.subscribe).toHaveBeenCalledTimes(1);
-    });
-
     it('calls mountMap on the mapPort after mount', () => {
       const mapPort = createMockMapPort();
 
@@ -92,6 +84,18 @@ describe('MapView', () => {
         expect.any(HTMLElement),
         'https://example.com/style.json',
       );
+    });
+
+    it('calls disposeMap on the mapPort when the component is destroyed', async () => {
+      // Arrange
+      const mapPort = createMockMapPort();
+
+      // Act
+      const { unmount } = render(MapView, { props: { mapPort } });
+      unmount();
+
+      // Assert
+      expect(mapPort.disposeMap).toHaveBeenCalledTimes(1);
     });
   });
 });
