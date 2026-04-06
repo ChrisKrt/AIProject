@@ -5,35 +5,39 @@
    * Composes all structural shell components:
    * - <AppHeader> – Global navigation header
    * - <AppSidebar> – Vertical icon navigation sidebar
-   * - <MainLayout> – Three-section content layout
-   * - <BottomStatusBar> – System status footer
+   * - <MainLayout> – Three-section content layout (receives mapPort)
+   * - <BottomStatusBar> – System status footer (receives mapPort)
    *
-   * Bootstraps the navigation state (NavigationState + NavigationAdapter),
-   * injects the navigation port into child components, and initializes the
-   * active theme from the design token theme-switcher.
-   *
-   * The shell renders a full-screen background using a CSS gradient to meet
-   * offline requirements (ADR-001) without depending on external image URLs.
+   * Bootstraps navigation state (NavigationState + NavigationAdapter) and map
+   * state (MapState + MapLibreAdapter), injects ports into child components,
+   * and initialises the active theme from the design token theme-switcher.
    *
    * Accessibility:
    * - Region changes are announced via aria-live regions in child components (AC #25)
    * - Semantic elements: header, aside, main, footer (AC #24)
    */
-  import { onDestroy } from "svelte";
-  import { NavigationState } from "../../../Application/navigation/NavigationState.js";
-  import { NavigationAdapter } from "../../../Infrastructure/navigation/NavigationAdapter.js";
-  import AppHeader from "../app-header/AppHeader.svelte";
-  import AppSidebar from "../app-sidebar/AppSidebar.svelte";
-  import MainLayout from "../main-layout/MainLayout.svelte";
-  import BottomStatusBar from "../bottom-status-bar/BottomStatusBar.svelte";
-  import styles from "./AppShell.module.css";
+  import { onDestroy } from 'svelte';
+  import { NavigationState } from '../../../Application/navigation/NavigationState.js';
+  import { NavigationAdapter } from '../../../Infrastructure/navigation/NavigationAdapter.js';
+  import { MapState } from '../../../Application/map/MapState.js';
+  import { MapLibreAdapter } from '../../../Infrastructure/map/MapLibreAdapter.js';
+  import AppHeader from '../app-header/AppHeader.svelte';
+  import AppSidebar from '../app-sidebar/AppSidebar.svelte';
+  import MainLayout from '../main-layout/MainLayout.svelte';
+  import BottomStatusBar from '../bottom-status-bar/BottomStatusBar.svelte';
+  import styles from './AppShell.module.css';
 
   const navigationState = new NavigationState();
   const navigationAdapter = new NavigationAdapter(navigationState);
   const navigationPort = navigationAdapter.getPort();
 
-  // Release BroadcastChannel resources when the shell is unmounted.
-  onDestroy(() => navigationAdapter.dispose());
+  const mapState = new MapState();
+  const mapAdapter = new MapLibreAdapter(mapState);
+
+  onDestroy(() => {
+    navigationAdapter.dispose();
+    mapAdapter.disposeMap();
+  });
 </script>
 
 <div class={styles.shell}>
@@ -41,8 +45,8 @@
 
   <div class={styles.shell__body}>
     <AppSidebar {navigationPort} />
-    <MainLayout />
+    <MainLayout mapPort={mapAdapter} />
   </div>
 
-  <BottomStatusBar class={styles.shell__status} />
+  <BottomStatusBar mapPort={mapAdapter} class={styles.shell__status} />
 </div>

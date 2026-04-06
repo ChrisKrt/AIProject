@@ -7,7 +7,7 @@
    *
    * Sections:
    * - Left panel: 256px – OBJ_DETECTION live feed (AC #13)
-   * - Center: flex-1 – main content area (AC #14)
+   * - Center: flex-1 – main content area with MapView (AC #14, PBI-006)
    * - Right panel: 288px – optional metadata panel (AC #12)
    *
    * All panels use liquid glass design (AC #15).
@@ -18,6 +18,8 @@
    * - Regions labelled with aria-label for screen readers (AC #25)
    */
   import type { Snippet } from "svelte";
+  import type { IMapPort } from "../../../Application/ports/IMapPort.js";
+  import MapView from "../map-view/MapView.svelte";
   import styles from "./MainLayout.module.css";
 
   interface Props {
@@ -29,9 +31,11 @@
     right?: Snippet;
     /** Optional CSS class applied to the layout root element. */
     class?: string;
+    /** Map port for the geographic intelligence layer (PBI-006). */
+    mapPort?: IMapPort;
   }
 
-  const { left, children, right, class: className }: Props = $props();
+  const { left, children, right, class: className, mapPort }: Props = $props();
 </script>
 
 <div class={`${styles.layout} ${className || ""}`.trim()}>
@@ -51,14 +55,18 @@
       </div>
     </section>
 
-    <!-- Center: main intelligence visualization area (AC #14) -->
+    <!-- Center: main intelligence visualization area with map (AC #14, PBI-006) -->
     <section
       class={styles.layout__center}
       aria-label="Intelligence visualization"
     >
       <div class={styles["layout__center-grid"]} aria-hidden="true"></div>
       <div class={styles["layout__center-content"]}>
-        {#if children}{@render children()}{/if}
+        {#if mapPort}
+          <MapView {mapPort} />
+        {:else if children}
+          {@render children()}
+        {/if}
       </div>
     </section>
 
