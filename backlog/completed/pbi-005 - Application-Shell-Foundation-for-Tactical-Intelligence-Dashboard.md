@@ -1,10 +1,10 @@
 ---
 id: PBI-005
 title: Application Shell - Foundation for Tactical Intelligence Dashboard
-status: In Review
+status: Done
 assignee: []
 created_date: '2026-04-02 16:52'
-updated_date: '2026-04-03 18:42'
+updated_date: '2026-04-06 15:24'
 labels:
   - User Story
 dependencies: []

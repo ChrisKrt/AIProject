@@ -1,7 +1,7 @@
 ---
 name: Red
 description: "TDD Red Phase: Write failing tests that define expected behavior"
-user-invokable: false
+user-invocable: false
 tools: ['read', 'search', 'edit', 'execute']
 ---
 

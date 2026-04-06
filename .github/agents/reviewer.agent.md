@@ -1,7 +1,7 @@
 ---
 name: Reviewer
 description: Review code for quality, security, architecture compliance, and test coverage
-user-invokable: false
+user-invocable: false
 tools: ['read', 'search']
 ---
 
