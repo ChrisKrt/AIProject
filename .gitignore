@@ -44,12 +44,6 @@ coverage/
 # Env
 .env*
 
-# Backlog generated/archived
-backlog/archive/
-backlog/completed/
-backlog/drafts/
-backlog/milestones/
-
 # Playwright BDD generated specs
 .features-gen/
 

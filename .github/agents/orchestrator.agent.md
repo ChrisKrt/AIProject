@@ -86,4 +86,3 @@ This project uses:
 - **DDD** (Domain-Driven Design) for domain modeling
 - A **three-tier design token system** for UI theming (primitive → semantic → component)
 
-Refer to `AGENTS.md` in the workspace root for Backlog.md CLI usage rules.

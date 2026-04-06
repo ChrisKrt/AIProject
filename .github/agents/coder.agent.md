@@ -1,9 +1,10 @@
 ---
 name: Coder
 description: Implement features using Test-Driven Development (Red/Green/Refactor cycle)
-user-invokable: false
+user-invocable: false
 tools: ['agent', 'read', 'search']
 agents: ['Red', 'Green', 'Refactor']
+model: Claude Haiku 4.5 (copilot)
 ---
 
 # Coder SubAgent (TDD)

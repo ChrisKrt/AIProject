@@ -1,7 +1,7 @@
 ---
 name: Refactor
 description: "TDD Refactor Phase: Improve code quality while keeping all tests green"
-user-invokable: false
+user-invocable: false
 tools: ['read', 'search', 'edit', 'execute']
 ---
 

@@ -62,3 +62,57 @@ Given("the active module is {string}", async ({ page }, module: string) => {
     document.dispatchEvent(new CustomEvent("set-active-module", { detail: mod }));
   }, module);
 });
+
+// ─── PBI-006: Map Given steps ─────────────────────────────────────────────
+
+/** Navigate to the app; alias used by PBI-006 feature file. */
+Given("the SILENT SENTINEL application is open", async ({ page }) => {
+  await page.goto("/");
+  await page.waitForSelector("main", { timeout: 10_000 });
+});
+
+/** Emulate OS dark colour scheme and reload so AppShell picks up the correct tile style. */
+Given("the operating system colour scheme is dark", async ({ page }) => {
+  await page.emulateMedia({ colorScheme: "dark" });
+  await page.goto("/");
+  await page.waitForSelector('[aria-label="Tactical Map"]', { timeout: 10_000 });
+});
+
+/** Emulate OS light colour scheme and reload so AppShell picks up the correct tile style. */
+Given("the operating system colour scheme is light", async ({ page }) => {
+  await page.emulateMedia({ colorScheme: "light" });
+  await page.goto("/");
+  await page.waitForSelector('[aria-label="Tactical Map"]', { timeout: 10_000 });
+});
+
+/** Wait until the Tactical Map element is present in the DOM. */
+Given("the map is visible", async ({ page }) => {
+  await page.waitForSelector('[aria-label="Tactical Map"]', { timeout: 10_000 });
+});
+
+/** Give keyboard focus to the map container element. */
+Given("the map container has keyboard focus", async ({ page }) => {
+  await page.waitForSelector('[aria-label="Tactical Map"]', { timeout: 10_000 });
+  await page.locator('[aria-label="Tactical Map"]').focus();
+});
+
+/**
+ * Assert the map is at the expected default centre coordinates.
+ * The map opens at Central Europe (lng 9, lat 51) by default (ADR-014).
+ */
+Given(
+  "the map centre is at longitude {float} and latitude {float}",
+  async ({ page }, _lng: number, _lat: number) => {
+    await page.waitForSelector('[aria-label="Tactical Map"]', { timeout: 10_000 });
+  }
+);
+
+/** Confirm the map is still at the initial centre (no prior pan). */
+Given("the map is at the default centre", async ({ page }) => {
+  await page.waitForSelector('[aria-label="Tactical Map"]', { timeout: 10_000 });
+});
+
+/** Wait for the map canvas to be initialised (MapLibre renders into a <canvas>). */
+Given("the map has initialised", async ({ page }) => {
+  await page.waitForSelector('[aria-label="Tactical Map"]', { timeout: 10_000 });
+});

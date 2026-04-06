@@ -1,7 +1,7 @@
 ---
 name: Domain-Expert-Sub
 description: Analyze domain concepts and verify terminology consistency
-user-invokable: false
+user-invocable: false
 tools: ['read', 'search', 'web']
 ---
 

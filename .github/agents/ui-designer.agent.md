@@ -1,8 +1,9 @@
 ---
 name: UI-Designer
 description: Create UI mockups and visual references for user stories
-user-invokable: false
+user-invocable: false
 tools: ['read', 'search', 'web']
+model: Gemini 3 Flash (Preview) (copilot)
 ---
 
 # UI Designer SubAgent

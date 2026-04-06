@@ -20,14 +20,18 @@
 
 /* ---------- Left Panel (AC #13) ---------- */
 
-/** OBJ_DETECTION live feed panel (256px, liquid glass). */
+/** OBJ_DETECTION live feed panel (256px, liquid glass), absolute overlay. */
 .layout__left {
+    position: absolute;
+    left: var(--spacing-3);
+    top: var(--spacing-3);
+    bottom: var(--spacing-3);
+    width: 256px;
+    z-index: 10;
     display: flex;
     flex-direction: column;
-    width: 256px;
-    flex-shrink: 0;
-    margin: var(--spacing-3);
-    /* Liquid glass (AC #15) */
+    /* Liquid glass transparent overlay (AC #15) */
+    background-color: rgba(8, 16, 32, 0.55);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -59,13 +63,12 @@
 
 /* ---------- Center (AC #14) ---------- */
 
-/** Main intelligence visualization area. */
+/** Main intelligence visualization area – full-bleed background layer. */
 .layout__center {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
     overflow: hidden;
-    position: relative;
 }
 
 /** Dot-grid overlay (AC #16): 24px spacing, no pointer events. */
@@ -81,23 +84,25 @@
 }
 
 .layout__center-content {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+    position: absolute;
+    inset: 0;
     overflow: hidden;
     z-index: 2;
 }
 
 /* ---------- Right Panel (AC #12) ---------- */
 
-/** Optional metadata/telemetry panel (288px, liquid glass). */
+/** Optional metadata/telemetry panel (288px, liquid glass), absolute overlay. */
 .layout__right {
+    position: absolute;
+    right: var(--spacing-3);
+    top: var(--spacing-3);
+    bottom: var(--spacing-3);
+    width: 288px;
+    z-index: 10;
     display: flex;
     flex-direction: column;
-    width: 288px;
-    flex-shrink: 0;
-    margin: var(--spacing-3);
+    background-color: rgba(8, 16, 32, 0.55);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.08);

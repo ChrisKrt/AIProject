@@ -1,7 +1,7 @@
 ---
 name: Documenter
 description: Write and update project documentation following established guidelines
-user-invokable: false
+user-invocable: false
 tools: ['read', 'search', 'edit']
 ---
 

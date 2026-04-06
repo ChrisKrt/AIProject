@@ -4,6 +4,7 @@ description: Manage the design system, design tokens, themes, and UI components
 argument-hint: Describe the design system change or UI component to create
 tools: ['read', 'search', 'edit', 'web', 'agent']
 agents: ['UI-Designer']
+model: Gemini 3 Flash (Preview)
 handoffs:
   - label: Back to Orchestrator
     agent: Orchestrator

@@ -1,7 +1,7 @@
 ---
 name: Green
 description: "TDD Green Phase: Write minimal production code to make failing tests pass"
-user-invokable: false
+user-invocable: false
 tools: ['read', 'search', 'edit', 'execute']
 ---
 
