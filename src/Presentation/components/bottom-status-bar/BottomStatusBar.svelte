@@ -59,7 +59,7 @@
   class={`${styles.footer} ${className || ''}`.trim()}
 >
   {#if mapPort}
-    <span aria-label="Coordinates" class={styles.footer__coords}>
+    <span aria-label="Coordinates" aria-live="polite" class={styles.footer__coords}>
       {lng.toFixed(4)}° E, {lat.toFixed(4)}° N
     </span>
   {/if}

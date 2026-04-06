@@ -16,8 +16,8 @@
 /* Override MapLibre control styles to use design tokens */
 :global(.maplibregl-ctrl-group) {
   border-radius: 0 !important;
-  background-color: rgba(61, 95, 150, 0.9) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  background-color: var(--color-surface-overlay, rgba(61, 95, 150, 0.9)) !important;
+  border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.15)) !important;
 }
 
 :global(.maplibregl-ctrl button) {

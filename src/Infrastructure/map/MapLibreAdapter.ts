@@ -31,7 +31,7 @@ export class MapLibreAdapter implements IMapPort {
   private _unsubscribe: (() => void) | null = null;
 
   constructor(port: IMapPort) {
-    if (!port) throw new Error('MapLibreAdapter requires a valid IMapPort.');
+    if (!port) throw new Error('MapLibreAdapter constructor requires a non-null IMapPort instance.');
     this._port = port;
     this._initChannel();
     this._unsubscribe = this._port.subscribe(() => this._broadcastCurrentState());
@@ -97,12 +97,14 @@ export class MapLibreAdapter implements IMapPort {
       );
       this._map.on('move', () => {
         try {
-          const center = this._map!.getCenter();
+          const map = this._map;
+          if (!map) return;
+          const center = map.getCenter();
           this._port.setViewport({
             center: [center.lng, center.lat],
-            zoom: this._map!.getZoom(),
-            bearing: this._map!.getBearing(),
-            pitch: this._map!.getPitch(),
+            zoom: map.getZoom(),
+            bearing: map.getBearing(),
+            pitch: map.getPitch(),
           });
         } catch {
           // Ignore move errors

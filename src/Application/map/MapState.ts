@@ -55,12 +55,18 @@ export class MapState implements IMapPort {
     };
   }
 
-  /** No-op in the core layer; overridden by the infrastructure adapter. */
+  /** No-op in the core layer; exists to satisfy the IMapPort contract.
+   * The infrastructure adapter (MapLibreAdapter) overrides this to mount
+   * the real MapLibre GL map renderer into the provided DOM container.
+   */
   mountMap(_container: HTMLElement, _styleUrl: string): void {
     // no-op
   }
 
-  /** No-op in the core layer; overridden by the infrastructure adapter. */
+  /** No-op in the core layer; exists to satisfy the IMapPort contract.
+   * The infrastructure adapter (MapLibreAdapter) overrides this to release
+   * all map resources (renderer, BroadcastChannel, subscriptions).
+   */
   disposeMap(): void {
     // no-op
   }

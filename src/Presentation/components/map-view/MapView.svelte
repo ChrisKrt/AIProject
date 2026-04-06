@@ -47,9 +47,12 @@
   let unsubscribe: (() => void) | null = null;
 
   onMount(() => {
+    // Subscribe so that components higher in the tree that also hold a
+    // reference to mapPort (e.g. BottomStatusBar) receive change notifications
+    // routed through this component's lifecycle.
     unsubscribe = mapPort.subscribe(() => {
-      // Viewport updates are handled by the map renderer; subscribers are
-      // notified so that other components (e.g. BottomStatusBar) can react.
+      // Viewport updates are propagated by the adapter to all port subscribers.
+      // This component delegates rendering entirely to MapLibre GL.
     });
 
     if (containerEl) {
